@@ -1,6 +1,7 @@
 import {Menu, X} from "lucide-react";
 import {AnimatePresence, motion} from "motion/react";
 import {useState} from "react";
+import {Wordmark} from "@/components/Wordmark";
 import {BRAND, NAV_LINKS, WHATSAPP_LINKS} from "@/data";
 
 interface NavbarProps {
@@ -9,7 +10,7 @@ interface NavbarProps {
   handleNavClick: (id: string) => (e?: React.MouseEvent) => void;
 }
 
-function Wordmark() {
+function NavLogo() {
   return (
     <a
       href="#top"
@@ -20,9 +21,7 @@ function Wordmark() {
       className="flex items-baseline gap-2"
       aria-label={`${BRAND.name} home`}
     >
-      <span className="font-mono text-[1.1rem] font-medium tracking-tight text-ink">
-        {BRAND.name}
-      </span>
+      <Wordmark className="text-[1.25rem]" />
     </a>
   );
 }
@@ -34,7 +33,7 @@ export function Navbar(props: NavbarProps) {
   return (
     <header className={`fixed left-0 right-0 top-0 z-50 nav-glass`}>
       <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Wordmark />
+        <NavLogo />
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">

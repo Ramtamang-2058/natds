@@ -1,6 +1,7 @@
 import {ArrowDown, ArrowUpRight} from "lucide-react";
 import {motion} from "motion/react";
 import {MediaSlot} from "@/components/media/MediaSlot";
+import {Wordmark} from "@/components/Wordmark";
 import {HERO_MEDIA, WHATSAPP_LINKS} from "@/data";
 
 interface HeroProps {
@@ -67,9 +68,12 @@ export function Hero(props: HeroProps) {
               className="aspect-[16/9] h-full w-full sm:aspect-[21/9]"
             />
           )}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
-            <p className="caption text-ink/60">NATDS · researcher program</p>
-            <p className="caption flex items-center gap-2 text-ink/60">
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
+            <p className="frost-pill px-4 py-2">
+              <Wordmark className="text-[0.95rem]" />
+              <span className="caption text-ink-2">· researcher program</span>
+            </p>
+            <p className="frost-pill caption px-4 py-2 text-ink-2">
               scroll <ArrowDown className="h-3.5 w-3.5" />
             </p>
           </div>

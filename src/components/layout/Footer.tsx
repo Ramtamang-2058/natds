@@ -1,3 +1,4 @@
+import {Wordmark} from "@/components/Wordmark";
 import {BRAND, NAV_LINKS} from "@/data";
 
 interface FooterProps {
@@ -12,9 +13,7 @@ export function Footer(props: FooterProps) {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
-            <p className="font-mono text-xl font-medium tracking-tight text-ink">
-              {BRAND.name}<span className="font-display italic text-accent">.</span>
-            </p>
+            <Wordmark className="text-[1.5rem]" />
             <p className="mt-3 max-w-sm text-[0.88rem] leading-relaxed text-ink-2">
               {BRAND.fullName}. Research-grade AI systems, researcher programs and
               digital transformation — built for how Nepal works.
