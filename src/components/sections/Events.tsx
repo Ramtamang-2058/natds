@@ -47,38 +47,26 @@ export function Events() {
               </p>
 
               <div className="mt-7 grid grid-cols-2 gap-3 md:grid-cols-4">
-                <MediaSlot
-                  src={event.imagePaths[0]}
-                  alt={`${event.title} main photograph`}
-                  placeholderLabel={`${event.id}/…`}
-                  className="col-span-2 aspect-[16/10] h-full w-full overflow-hidden rounded-xl border border-line"
-                />
-                {event.imagePaths.slice(1, 3).map((src, i) => (
+                {event.imagePaths.map((src, i) => (
                   <MediaSlot
                     key={src}
                     src={src}
-                    alt={`${event.title} photograph ${i + 2}`}
+                    alt={`${event.title} photograph ${i + 1}`}
                     placeholderLabel={`${event.id}/…`}
-                    motion="none"
-                    className="aspect-square overflow-hidden rounded-xl border border-line"
+                    className={
+                      i === 0
+                        ? "col-span-2 row-span-2 aspect-square h-full w-full rounded-xl border border-line md:aspect-[4/3]"
+                        : "aspect-square h-full w-full rounded-xl border border-line"
+                    }
                   />
                 ))}
-                <MediaSlot
-                  src={event.imagePaths[3]}
-                  alt={`${event.title} photograph 4`}
-                  placeholderLabel={`${event.id}/…`}
-                  motion="none"
-                  className="aspect-square overflow-hidden rounded-xl border border-line"
-                />
                 <a
                   href={WHATSAPP_LINKS.general}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="col-span-2 flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-ink-3/60 p-4 text-center transition-colors hover:border-accent md:col-span-3 md:flex-row md:justify-between md:px-6 md:py-5"
+                  className="hidden aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-ink-3/60 p-4 text-center transition-colors hover:border-accent md:flex"
                 >
-                  <span className="font-display text-lg font-medium italic text-ink-2">
-                    Join the next one
-                  </span>
+                  <span className="font-display text-lg font-medium italic text-ink-2">Join the next one</span>
                   <span className="caption">message us on WhatsApp</span>
                 </a>
               </div>
