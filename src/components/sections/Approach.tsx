@@ -3,7 +3,7 @@ import {APPROACH} from "@/data";
 
 export function Approach() {
   return (
-    <section className="hairline-t relative bg-paper py-20 lg:py-24">
+    <section className="hairline-t bg-paper py-20 lg:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{opacity: 0, y: 16}}
@@ -13,7 +13,7 @@ export function Approach() {
           className="grid grid-cols-1 gap-10 lg:grid-cols-12"
         >
           <div className="lg:col-span-3">
-            <p className="eyebrow mt-1">Approach</p>
+            <p className="kicker mt-1">Approach</p>
           </div>
           <div className="lg:col-span-9">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -22,10 +22,10 @@ export function Approach() {
                   <span className="font-display text-4xl font-light italic text-accent/70">
                     {step.index}
                   </span>
-                  <h3 className="mt-2 font-display text-xl font-medium tracking-tight text-ink">
+                  <h3 className="mt-2 font-display text-xl font-normal tracking-[-0.01em] text-ink">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-[0.92rem] leading-relaxed text-ink-soft">
+                  <p className="mt-2 text-[0.92rem] leading-relaxed text-ink-2">
                     {step.description}
                   </p>
                 </div>

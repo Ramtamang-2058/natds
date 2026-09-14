@@ -7,11 +7,7 @@ const research = PRODUCTS[0];
 
 export function ResearcherProgram() {
   return (
-    <section id="research" className="hairline-t relative bg-paper py-24 lg:py-32">
-      <span className="section-index pointer-events-none absolute right-6 top-10 hidden text-[10rem] lg:block">
-        01
-      </span>
-
+    <section id="research" className="hairline-t bg-paper py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{opacity: 0, y: 16}}
@@ -21,20 +17,20 @@ export function ResearcherProgram() {
           className="grid grid-cols-1 gap-12 lg:grid-cols-12"
         >
           <div className="lg:col-span-7">
-            <p className="eyebrow mb-7">Flagship · Active</p>
-            <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-6xl">
+            <p className="kicker mb-6">Flagship · Active</p>
+            <h2 className="font-display text-4xl font-normal leading-[1.06] tracking-[-0.01em] text-ink sm:text-6xl">
               {research.name}
             </h2>
             <p className="mt-4 font-display text-xl font-light italic text-accent">
               {research.tagline}
             </p>
-            <p className="mt-6 max-w-xl text-[0.95rem] leading-relaxed text-ink-soft">
+            <p className="mt-6 max-w-xl text-[0.95rem] leading-relaxed text-ink-2">
               {research.description}
             </p>
           </div>
 
           <div className="flex flex-col justify-end gap-5 lg:col-span-5">
-            <div className="relative overflow-hidden">
+            <div className="overflow-hidden rounded-xl border border-line">
               <MediaSlot
                 src="/images/events/researcher-training/1.jpg"
                 placeholderLabel="/images/events/researcher-training/1.jpg"
@@ -44,7 +40,8 @@ export function ResearcherProgram() {
           </div>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-sm bg-line md:grid-cols-3">
+        {/* Feature cards */}
+        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
           {research.features.map((feature, i) => (
             <motion.div
               key={feature}
@@ -52,10 +49,12 @@ export function ResearcherProgram() {
               whileInView={{opacity: 1, y: 0}}
               viewport={{once: true, margin: "-40px"}}
               transition={{duration: 0.5, delay: (i % 3) * 0.06}}
-              className="bg-paper-cold p-6"
+              className="card"
             >
-              <span className="font-mono text-[0.62rem] text-ink-mute">{String(i + 1).padStart(2, "0")}</span>
-              <p className="mt-3 text-[0.92rem] leading-relaxed text-ink-soft">{feature}</p>
+              <span className="font-mono text-[0.6rem] text-accent">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <p className="mt-3 text-[0.92rem] leading-relaxed text-ink-2">{feature}</p>
             </motion.div>
           ))}
         </div>
@@ -65,7 +64,7 @@ export function ResearcherProgram() {
             href={WHATSAPP_LINKS.researcher}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-clay"
+            className="btn-accent"
           >
             Apply via WhatsApp
             <ArrowUpRight className="h-4 w-4" />

@@ -1,14 +1,10 @@
 import {motion} from "motion/react";
 import {MediaSlot} from "@/components/media/MediaSlot";
-import {EVENTS} from "@/data";
+import {EVENTS, WHATSAPP_LINKS} from "@/data";
 
 export function Events() {
   return (
-    <section id="events" className="hairline-t relative bg-paper-soft py-24 lg:py-32">
-      <span className="section-index pointer-events-none absolute right-6 top-10 hidden text-[10rem] opacity-40 lg:block">
-        02
-      </span>
-
+    <section id="events" className="hairline-t bg-paper-2 py-24 lg:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{opacity: 0, y: 16}}
@@ -17,11 +13,11 @@ export function Events() {
           transition={{duration: 0.7}}
           className="max-w-2xl"
         >
-          <p className="eyebrow mb-7">Field notes</p>
-          <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-ink sm:text-6xl">
+          <p className="kicker mb-6">Field notes</p>
+          <h2 className="font-display text-4xl font-normal leading-[1.06] tracking-[-0.01em] text-ink sm:text-6xl">
             Recent work &amp; events.
           </h2>
-          <p className="mt-6 text-[0.95rem] leading-relaxed text-ink-soft">
+          <p className="mt-6 text-[0.95rem] leading-relaxed text-ink-2">
             Researchers, students and teams in practice — documentation, field research and hands-on labs across Nepal.
           </p>
         </motion.div>
@@ -37,16 +33,16 @@ export function Events() {
             >
               <div className="flex flex-wrap items-baseline justify-between gap-4">
                 <div className="flex flex-wrap items-baseline gap-x-5 gap-y-1">
-                  <span className="font-mono text-[0.62rem] text-ink-mute">
+                  <span className="font-mono text-[0.6rem] text-ink-3">
                     {String(e + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
+                  <h3 className="font-display text-3xl font-normal tracking-[-0.01em] text-ink sm:text-4xl">
                     {event.title}
                   </h3>
                 </div>
                 <p className="caption">{event.dateLabel} · {event.location}</p>
               </div>
-              <p className="mt-3 max-w-2xl text-[0.92rem] leading-relaxed text-ink-soft">
+              <p className="mt-3 max-w-2xl text-[0.92rem] leading-relaxed text-ink-2">
                 {event.note}
               </p>
 
@@ -59,18 +55,18 @@ export function Events() {
                     placeholderLabel={`${event.id}/…`}
                     className={
                       i === 0
-                        ? "col-span-2 row-span-2 aspect-square h-full w-full md:aspect-[4/3]"
-                        : "aspect-square h-full w-full"
+                        ? "col-span-2 row-span-2 aspect-square h-full w-full rounded-xl border border-line md:aspect-[4/3]"
+                        : "aspect-square h-full w-full rounded-xl border border-line"
                     }
                   />
                 ))}
                 <a
-                  href="https://wa.me/9779818488715?text=Hi%20NATDS!%20I%20saw%20your%20events."
+                  href={WHATSAPP_LINKS.general}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden aspect-square flex-col items-center justify-center gap-2 border border-dashed border-ink-faint/60 p-4 text-center transition-colors hover:border-accent md:flex"
+                  className="hidden aspect-square flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-ink-3/60 p-4 text-center transition-colors hover:border-accent md:flex"
                 >
-                  <span className="font-display text-lg font-medium italic text-ink-soft">Join the next one</span>
+                  <span className="font-display text-lg font-medium italic text-ink-2">Join the next one</span>
                   <span className="caption">message us on WhatsApp</span>
                 </a>
               </div>

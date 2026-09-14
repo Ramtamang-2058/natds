@@ -16,10 +16,8 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="hairline-t relative bg-night py-24 text-paper on-dark lg:py-32">
-      <span className="section-index absolute right-6 top-10 hidden text-[10rem] lg:block">05</span>
-
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="contact" className="hairline-t bg-paper-2 py-24 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <motion.div
           initial={{opacity: 0, y: 16}}
           whileInView={{opacity: 1, y: 0}}
@@ -28,11 +26,11 @@ export function Contact() {
           className="grid grid-cols-1 gap-12 lg:grid-cols-12"
         >
           <div className="lg:col-span-6">
-            <p className="eyebrow on-dark mb-7">Contact</p>
-            <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight sm:text-6xl">
-              Let&apos;s start <em className="font-light italic text-accent-bright">something.</em>
+            <p className="kicker mb-6">Contact</p>
+            <h2 className="font-display text-4xl font-normal leading-[1.06] tracking-[-0.01em] text-ink sm:text-6xl">
+              Let&apos;s start <em className="font-light italic text-accent">something.</em>
             </h2>
-            <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-paper/75">
+            <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-ink-2">
               The fastest way to reach us is WhatsApp — a human answers, usually within the hour.
             </p>
 
@@ -40,11 +38,11 @@ export function Contact() {
               href={WHATSAPP_LINKS.general}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-9 inline-block border-b-2 border-accent-bright pb-2 font-display text-3xl font-medium tracking-tight transition-colors hover:text-accent-bright sm:text-4xl"
+              className="mt-9 inline-block border-b-2 border-accent pb-2 font-display text-3xl font-normal tracking-[-0.01em] transition-colors hover:text-accent sm:text-4xl"
             >
               {BRAND.whatsappDisplay}
             </a>
-            <p className="caption on-dark mt-3">WhatsApp · {BRAND.location}</p>
+            <p className="caption mt-3 text-ink-3">WhatsApp · {BRAND.location}</p>
 
             <ul className="mt-10 space-y-2.5">
               {[
@@ -58,9 +56,9 @@ export function Contact() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-baseline gap-3 text-[0.95rem] text-paper/80 transition-colors hover:text-paper"
+                    className="inline-flex items-baseline gap-3 text-[0.95rem] text-ink-2 transition-colors hover:text-ink"
                   >
-                    <span className="h-px w-4 bg-accent-bright" />
+                    <span className="h-px w-4 bg-accent" />
                     {link.label}
                   </a>
                 </li>
@@ -71,40 +69,40 @@ export function Contact() {
           <div className="lg:col-span-6">
             <form
               onSubmit={handleSubmit}
-              className="border border-paper/15 p-7 sm:p-9"
+              className="card-surface p-7 sm:p-9"
             >
               <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-2xl font-medium tracking-tight">Quick message</h3>
-                <span className="caption on-dark">opens in WhatsApp</span>
+                <h3 className="font-display text-2xl font-normal tracking-[-0.01em]">Quick message</h3>
+                <span className="caption text-ink-3">opens in WhatsApp</span>
               </div>
 
               <label className="mt-7 block">
-                <span className="caption on-dark">Your name</span>
+                <span className="caption">Your name</span>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Janaki Rana"
-                  className="mt-2 w-full border-b border-paper/25 bg-transparent px-1 py-3 text-[0.95rem] text-paper placeholder:text-paper/30 outline-none transition-colors focus:border-accent-bright"
+                  className="mt-2 w-full border-b border-line bg-transparent px-1 py-3 text-[0.95rem] text-ink placeholder:text-ink-3 outline-none transition-colors focus:border-accent"
                   required
                 />
               </label>
 
               <label className="mt-6 block">
-                <span className="caption on-dark">Message</span>
+                <span className="caption">Message</span>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
                   placeholder="Tell us about the research or workflow you want to transform…"
-                  className="mt-2 w-full resize-none border-b border-paper/25 bg-transparent px-1 py-3 text-[0.95rem] text-paper placeholder:text-paper/30 outline-none transition-colors focus:border-accent-bright"
+                  className="mt-2 w-full resize-none border-b border-line bg-transparent px-1 py-3 text-[0.95rem] text-ink placeholder:text-ink-3 outline-none transition-colors focus:border-accent"
                   required
                 />
               </label>
 
               <button
                 type="submit"
-                className="mt-8 inline-flex items-center gap-2 bg-accent px-7 py-3.5 text-sm font-medium text-paper-cold transition-colors hover:bg-accent-deep"
+                className="btn-accent mt-8"
               >
                 <Send className="h-4 w-4" />
                 Send via WhatsApp

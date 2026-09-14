@@ -52,6 +52,11 @@ export interface HeroMedia {
   video: string;
 }
 
+export interface Manifesto {
+  quote: string;
+  cite: string;
+}
+
 export interface MediaSlotProps {
   src: string;
   alt?: string;

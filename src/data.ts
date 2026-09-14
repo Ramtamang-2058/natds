@@ -2,6 +2,7 @@ import type {
   ApproachPoint,
   EventItem,
   HeroMedia,
+  Manifesto,
   NavLink,
   Product,
   Service,
@@ -12,6 +13,7 @@ export type {
   ApproachPoint,
   EventItem,
   HeroMedia,
+  Manifesto,
   NavLink,
   Product,
   Service,
@@ -63,6 +65,15 @@ export const NAV_LINKS: NavLink[] = [
 export const HERO_MEDIA: HeroMedia = {
   poster: "/images/events/researcher-training/poster.jpg",
   video: "/videos/hero.mp4",
+};
+
+/* ─────────────────────────────────────────────
+   Manifesto (quote bar)
+───────────────────────────────────────────── */
+export const MANIFESTO: Manifesto = {
+  quote:
+    "Research isn't the search for answers. It's the discipline of asking better questions — and AI lets Nepali researchers ask them at the frontier.",
+  cite: "NATDS Research Lab, 2025",
 };
 
 /* ─────────────────────────────────────────────
