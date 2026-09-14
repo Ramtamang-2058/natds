@@ -9,14 +9,12 @@ export function App() {
 
   return (
     <div
-      className="min-h-screen flex flex-col font-sans bg-ink-950 text-lumen selection:bg-aurora selection:text-ink-950 overflow-x-hidden"
+      className="min-h-screen flex flex-col font-sans bg-paper text-ink overflow-x-hidden"
       id="natds-main"
     >
       <Navbar
         scrolled={nav.scrolled}
         activeSection={nav.activeSection}
-        mobileMenuOpen={nav.mobileMenuOpen}
-        setMobileMenuOpen={nav.setMobileMenuOpen}
         handleNavClick={nav.handleNavClick}
       />
 

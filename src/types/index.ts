@@ -1,6 +1,7 @@
 export interface NavLink {
   id: string;
   label: string;
+  index?: string;
 }
 
 export interface Product {
@@ -8,70 +9,42 @@ export interface Product {
   name: string;
   tagline: string;
   description: string;
-  status: "Active" | "Beta" | "Coming Soon";
+  status: "Active" | "Coming Soon";
   ctaAvailable: boolean;
   features: string[];
-  skills: string[];
 }
 
 export interface Service {
   id: string;
   title: string;
   description: string;
-  longDescription: string;
-}
-
-export interface ChoiceReason {
-  id: string;
-  title: string;
-  description: string;
+  note: string;
 }
 
 export interface TrainingProgram {
   id: string;
   title: string;
+  description: string;
   target: string;
   duration: string;
   featured?: boolean;
   syllabus: string[];
 }
 
-export interface ResearchFocus {
+export interface EventItem {
   id: string;
   title: string;
-  description: string;
+  location: string;
+  note: string;
+  dateLabel?: string;
+  imagePaths: string[];
 }
 
-export interface ProcessStep {
+export interface ApproachPoint {
   id: string;
   index: string;
   title: string;
   description: string;
-}
-
-export interface Stat {
-  id: string;
-  value: string;
-  label: string;
-}
-
-export interface IndustryServed {
-  id: string;
-  title: string;
-  description: string;
-}
-
-export interface Testimonial {
-  id: string;
-  quote: string;
-  author: string;
-  role: string;
-  initial: string;
-}
-
-export interface MarqueeItem {
-  id: string;
-  label: string;
 }
 
 export interface HeroMedia {
@@ -84,5 +57,6 @@ export interface MediaSlotProps {
   alt?: string;
   poster?: string;
   className?: string;
-  priority?: boolean;
+  placeholderLabel?: string;
+  motion?: "kenburns" | "none";
 }

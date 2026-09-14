@@ -21,19 +21,16 @@ npm run preview   # preview the production build
 
 ## Adding images & videos
 
-Drop files into `public/` and reference by absolute path (`/images/…`, `/videos/…`).
-Until a file exists, the site shows generative CSS placeholder art automatically.
+**Events gallery:** drop photos into `public/images/events/` and update `EVENTS` in `src/data.ts`.
 
-Planned media slots:
+| Drop photos here | Shows in |
+|------------------|----------|
+| `public/images/events/prakriti-resource-center/1-3.jpg` | **Prakriti Resource Center** gallery |
+| `public/images/events/researcher-training/1-3.jpg` | **Researcher Training** gallery |
+| `public/videos/hero.mp4` (+ `public/images/events/researcher-training/poster.jpg`) | Hero visual |
+| `public/favicon.png` (180×180) · `public/logo.png` · `public/images/og-image.png` | Favicon / branding / share |
 
-| File | Where it appears |
-|------|------------------|
-| `public/videos/hero.mp4` (+ `public/images/hero-poster.jpg`) | Hero visual panel |
-| `public/images/og-image.png` | Social share image |
-| `public/favicon.png` (180×180) | Favicon / app icon |
-| `public/logo.png` | Branding |
-
-See `AGENTS.md` → "Adding media" for the full table.
+Missing files auto-show a tasteful placeholder with the target path as a caption — the site never breaks on missing media. Full table in `AGENTS.md` → "Adding media".
 
 ## Deployment
 

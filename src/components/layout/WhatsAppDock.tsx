@@ -1,4 +1,4 @@
-import {ArrowUp, MessageCircle} from "lucide-react";
+import {ArrowUp} from "lucide-react";
 import {AnimatePresence, motion} from "motion/react";
 import {WHATSAPP_LINKS} from "@/data";
 
@@ -16,14 +16,14 @@ export function WhatsAppDock(props: WhatsAppDockProps) {
         {showTopButton && (
           <motion.button
             type="button"
-            initial={{opacity: 0, scale: 0.6}}
+            initial={{opacity: 0, scale: 0.8}}
             animate={{opacity: 1, scale: 1}}
-            exit={{opacity: 0, scale: 0.6}}
+            exit={{opacity: 0, scale: 0.8}}
             onClick={scrollTop}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-border-ink bg-ink-800/80 text-text-ghost backdrop-blur transition-colors hover:text-lumen"
-            aria-label="Scroll to top"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/20 bg-paper-cold text-ink transition-colors hover:bg-ink hover:text-paper"
+            aria-label="Back to top"
           >
-            <ArrowUp className="h-5 w-5" />
+            <ArrowUp className="h-4 w-4" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -32,11 +32,10 @@ export function WhatsAppDock(props: WhatsAppDockProps) {
         href={WHATSAPP_LINKS.general}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-aurora to-pulse text-ink-950 shadow-[0_10px_40px_rgba(139,124,255,0.45)] transition-transform hover:scale-105"
+        className="group flex h-12 w-12 items-center justify-center gap-1 rounded-full bg-ink font-display text-sm font-semibold text-paper shadow-[0_6px_24px_rgba(23,21,17,0.28)] transition-all hover:bg-accent"
         aria-label="Chat with NATDS on WhatsApp"
       >
-        <MessageCircle className="h-7 w-7" />
-        <span className="absolute -right-0.5 -top-0.5 h-3 w-3 rounded-full bg-pulse border-2 border-ink-950 pulse-dot" style={{animation: "none"}} />
+        <span className="translate-x-[1px] transition-transform group-hover:translate-x-0.5">WA</span>
       </a>
     </div>
   );
