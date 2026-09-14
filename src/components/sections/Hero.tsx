@@ -53,12 +53,20 @@ export function Hero(props: HeroProps) {
         className="mx-auto max-w-6xl px-4 sm:px-6"
       >
         <div className="relative overflow-hidden rounded-xl border border-line">
-          <MediaSlot
-            src={HERO_MEDIA.video}
-            poster={HERO_MEDIA.poster}
-            placeholderLabel="/images/events/researcher-training/ · or /videos/hero.mp4"
-            className="aspect-[16/9] h-full w-full sm:aspect-[21/9]"
-          />
+          {HERO_MEDIA.videoActive ? (
+            <MediaSlot
+              src={HERO_MEDIA.video}
+              poster={HERO_MEDIA.poster}
+              placeholderLabel="/videos/hero.mp4"
+              className="aspect-[16/9] h-full w-full sm:aspect-[21/9]"
+            />
+          ) : (
+            <MediaSlot
+              src={HERO_MEDIA.poster}
+              alt="NATDS training session with a partner organization"
+              className="aspect-[16/9] h-full w-full sm:aspect-[21/9]"
+            />
+          )}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
             <p className="caption text-ink/60">NATDS · researcher program</p>
             <p className="caption flex items-center gap-2 text-ink/60">

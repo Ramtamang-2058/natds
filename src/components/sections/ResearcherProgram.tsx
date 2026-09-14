@@ -32,8 +32,8 @@ export function ResearcherProgram() {
           <div className="flex flex-col justify-end gap-5 lg:col-span-5">
             <div className="overflow-hidden rounded-xl border border-line">
               <MediaSlot
-                src="/images/events/researcher-training/1.jpg"
-                placeholderLabel="/images/events/researcher-training/1.jpg"
+                src="/images/events/ime-group/session.jpg"
+                alt="NATDS Researcher Program training session"
                 className="aspect-[4/3] h-full w-full"
               />
             </div>

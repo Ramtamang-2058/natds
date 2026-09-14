@@ -25,9 +25,9 @@ npm run preview   # preview the production build
 
 | Drop photos here | Shows in |
 |------------------|----------|
-| `public/images/events/prakriti-resource-center/1-3.jpg` | **Prakriti Resource Center** gallery |
-| `public/images/events/researcher-training/1-3.jpg` | **Researcher Training** gallery |
-| `public/videos/hero.mp4` (+ `public/images/events/researcher-training/poster.jpg`) | Hero visual |
+| `public/images/events/prakriti-resource-center/` | **Prakriti Resource Center** gallery (4 photos) |
+| `public/images/events/ime-group/` | **IME Group** gallery (4 photos) |
+| `public/videos/hero.mp4` + set `HERO_MEDIA.videoActive = true` | Hero video (currently shows a photo) |
 | `public/favicon.png` (180×180) · `public/logo.png` · `public/images/og-image.png` | Favicon / branding / share |
 
 Missing files auto-show a tasteful placeholder with the target path as a caption — the site never breaks on missing media. Full table in `AGENTS.md` → "Adding media".
@@ -45,7 +45,7 @@ src/
 ├── components/
 │   ├── layout/    Navbar · Footer · WhatsAppDock
 │   ├── media/     MediaSlot (graceful asset fallback)
-│   └── sections/  Hero · Marquee · ResearcherProgram · ManagerAI · Services · Training · WhyNATDS · Contact
+│   └── sections/  Hero · QuoteBar · ResearcherProgram · Events · ManagerAI · Services · Training · Approach · Contact
 ├── hooks/         useNavigation (single-page scroll nav)
 ├── types/         TS interfaces
 ├── pages/         HomePage

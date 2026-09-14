@@ -63,8 +63,9 @@ export const NAV_LINKS: NavLink[] = [
    Hero
 ───────────────────────────────────────────── */
 export const HERO_MEDIA: HeroMedia = {
-  poster: "/images/events/researcher-training/poster.jpg",
+  poster: "/images/events/ime-group/training-back-view.png",
   video: "/videos/hero.mp4",
+  videoActive: false,
 };
 
 /* ─────────────────────────────────────────────
@@ -124,25 +125,27 @@ export const EVENTS: EventItem[] = [
   {
     id: "prakriti-resource-center",
     title: "Prakriti Resource Center",
-    location: "Researcher meet-up & field visit",
+    location: "On-site training · team session",
     dateLabel: "Recent",
-    note: "On-site session with researchers exploring AI-assisted documentation and field-data workflows.",
+    note: "AI & digital skills training for the Prakriti Resource Center team — guided sessions, hands-on practice and group learning.",
     imagePaths: [
-      "/images/events/prakriti-resource-center/1.jpg",
-      "/images/events/prakriti-resource-center/2.jpg",
-      "/images/events/prakriti-resource-center/3.jpg",
+      "/images/events/prakriti-resource-center/training-front-right.jpeg",
+      "/images/events/prakriti-resource-center/teaching-trainer-and-trainee.jpeg",
+      "/images/events/prakriti-resource-center/trainees-reading-board.jpeg",
+      "/images/events/prakriti-resource-center/trainee-asking-question.jpeg",
     ],
   },
   {
-    id: "researcher-training",
-    title: "Researcher Training",
-    location: "NATDS Researcher Program · hands-on lab",
-    dateLabel: "Ongoing",
-    note: "Scholars working through literature mining, verification and analysis pipelines in a live lab.",
+    id: "ime-group",
+    title: "IME Group",
+    location: "Corporate AI upskilling · team training",
+    dateLabel: "Recent",
+    note: "The IME Group team through an intensive AI & digital skills program — interactive sessions, hands-on practice and certification.",
     imagePaths: [
-      "/images/events/researcher-training/1.jpg",
-      "/images/events/researcher-training/2.jpg",
-      "/images/events/researcher-training/3.jpg",
+      "/images/events/ime-group/group.jpg",
+      "/images/events/ime-group/session.jpg",
+      "/images/events/ime-group/certification.jpg",
+      "/images/events/ime-group/certification-female-participants.png",
     ],
   },
 ];

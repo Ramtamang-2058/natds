@@ -50,6 +50,8 @@ export interface ApproachPoint {
 export interface HeroMedia {
   poster: string;
   video: string;
+  /** set true once a real file exists at /videos/hero.mp4 */
+  videoActive?: boolean;
 }
 
 export interface Manifesto {

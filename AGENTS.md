@@ -69,7 +69,7 @@ npm run clean    # rm -rf dist
 1. **WhatsApp is the single contact channel.** Number lives in `src/data.ts` → `BRAND.whatsappNumber` (`9779818488715`). Pre-built links in `WHATSAPP_LINKS`. Update the number in ONE place. The Contact form and all CTAs open `wa.me` links.
 2. **No i18n.** Bilingual (Nepali) deliberately omitted — English only.
 3. **MediaSlot fallback:** every photo/video slot renders a paper-toned placeholder with the expected path as a caption when the file is absent. Add files under `public/` and the placeholders disappear automatically. Do NOT hardcode fallback logic per section.
-4. **Hero media:** the hero expects `/videos/hero.mp4` with poster `/images/events/researcher-training/poster.jpg`. Until then, the poster slot shows a placeholder.
+4. **Hero media:** hero shows the photo at `HERO_MEDIA.poster` (a real event photo) until `/videos/hero.mp4` exists. To switch to video, drop the file in `public/videos/` and set `HERO_MEDIA.videoActive = true` in `src/data.ts`.
 5. **`scroll-padding-top: 4.5rem`** on `html` keeps anchored sections clear of the fixed navbar.
 6. **ResearcherProgram/ManagerAI read `PRODUCTS[0]` / `PRODUCTS[1]`** (`data.ts`) at module load — reorder `PRODUCTS` and the sections swap content.
 
@@ -84,11 +84,13 @@ npm run clean    # rm -rf dist
 
 Drop photos into `public/images/events/<event>/` and update `imagePaths` in `EVENTS` (`src/data.ts`). Missing files auto-show placeholders — the site never breaks on missing images.
 
-| Folder | Event | Default paths referenced |
-|--------|-------|--------------------------|
-| `public/images/events/prakriti-resource-center/` | **Prakriti Resource Center** | `1.jpg`, `2.jpg`, `3.jpg` |
-| `public/images/events/researcher-training/` | **Researcher Training** | `1.jpg`, `2.jpg`, `3.jpg` + `poster.jpg` (hero poster) |
-| `public/videos/hero.mp4` | Hero background video | — |
+| Folder | Event | Photos |
+|--------|-------|--------|
+| `public/images/events/prakriti-resource-center/` | **Prakriti Resource Center** | `training-front-right.jpeg`, `teaching-trainer-and-trainee.jpeg`, `trainees-reading-board.jpeg`, `trainee-asking-question.jpeg` |
+| `public/images/events/ime-group/` | **IME Group** | `group.jpg`, `session.jpg`, `certification.jpg`, `certification-female-participants.png` |
+| `public/videos/hero.mp4` | Hero background video | — (hero currently shows `HERO_MEDIA.poster` image until a video exists) |
+
+Hero poster (image shown until a video drops in): `/images/events/ime-group/training-back-view.png`. Set `HERO_MEDIA.videoActive = true` in `src/data.ts` once a real `hero.mp4` exists.
 
 **Add a new event:** copy an `EVENTS` block in `src/data.ts`, create the folder under `public/images/events/`, add it to the grid in `src/components/sections/Events.tsx` if you want a different layout.
 
