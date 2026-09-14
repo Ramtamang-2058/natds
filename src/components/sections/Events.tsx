@@ -47,19 +47,29 @@ export function Events() {
               </p>
 
               <div className="mt-7 grid grid-cols-2 gap-3 md:grid-cols-4">
-                {event.imagePaths.map((src, i) => (
-                  <MediaSlot
-                    key={src}
-                    src={src}
-                    alt={`${event.title} photograph ${i + 1}`}
-                    placeholderLabel={`${event.id}/…`}
-                    className={
-                      i === 0
-                        ? "col-span-2 row-span-2 aspect-square h-full w-full rounded-xl border border-line md:aspect-[4/3]"
-                        : "aspect-square h-full w-full rounded-xl border border-line"
-                    }
-                  />
-                ))}
+                {event.imagePaths.map((src, i) =>
+                  i === 0 ? (
+                    <div
+                      key={src}
+                      className="col-span-2 row-span-2 overflow-hidden rounded-xl border border-line"
+                    >
+                      <MediaSlot
+                        src={src}
+                        alt={`${event.title} photograph ${i + 1}`}
+                        placeholderLabel={`${event.id}/…`}
+                        className="h-full w-full"
+                      />
+                    </div>
+                  ) : (
+                    <MediaSlot
+                      key={src}
+                      src={src}
+                      alt={`${event.title} photograph ${i + 1}`}
+                      placeholderLabel={`${event.id}/…`}
+                      className="aspect-square h-full w-full rounded-xl border border-line"
+                    />
+                  )
+                )}
                 <a
                   href={WHATSAPP_LINKS.general}
                   target="_blank"
