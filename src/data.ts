@@ -30,7 +30,7 @@ export const BRAND = {
   url: "https://natds.safalai.com.np",
   whatsappNumber: "9779818488715",
   whatsappDisplay: "+977 981-8488715",
-  email: "hello@safalai.com.np",
+  email: "hello@natds.safalai.com.np",
   location: "Kathmandu, Nepal",
 };
 
