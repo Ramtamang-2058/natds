@@ -114,7 +114,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: "managers",
-    name: "Manager AI",
+    name: "AI for Managers & Executives",
     tagline: "Decision intelligence and workload automation for leaders. Enrolment open.",
     description:
       "A live 8-session program for people who lead teams — workload automation that removes admin at the source, 'ask my documents' knowledge workflows, and one-page decision briefs with evidence. No hype, no vendor lock-in.",
