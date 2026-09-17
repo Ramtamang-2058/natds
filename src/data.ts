@@ -44,8 +44,21 @@ export const WHATSAPP_LINKS = {
     "Hi NATDS! I'm interested in the Researcher Program. Please share the details."
   )}`,
   managers: `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Hi NATDS! I'm interested in the AI for Managers program. Please share the details."
+    "Hi NATDS! I'm interested in the AI for Managers & Executives course (8 sessions \u00b7 2 hrs each). Please share the details."
   )}`,
+  students: `https://wa.me/${wa}?text=${encodeURIComponent(
+    "Hi NATDS! I'm interested in the AI for Students & Learners program. Please share the syllabus."
+  )}`,
+  professionals: `https://wa.me/${wa}?text=${encodeURIComponent(
+    "Hi NATDS! I'm interested in the AI for Professionals & Creatives program. Please share the syllabus."
+  )}`,
+};
+
+export const PROGRAM_WA_LINK: Record<string, string> = {
+  "prog-researchers": WHATSAPP_LINKS.researcher,
+  "prog-managers": WHATSAPP_LINKS.managers,
+  "prog-students": WHATSAPP_LINKS.students,
+  "prog-professionals": WHATSAPP_LINKS.professionals,
 };
 
 /* ─────────────────────────────────────────────
@@ -54,9 +67,10 @@ export const WHATSAPP_LINKS = {
 export const NAV_LINKS: NavLink[] = [
   { id: "research", label: "Research", index: "01" },
   { id: "events", label: "Events", index: "02" },
-  { id: "services", label: "Services", index: "03" },
-  { id: "training", label: "Training", index: "04" },
-  { id: "contact", label: "Contact", index: "05" },
+  { id: "managers", label: "Managers", index: "03" },
+  { id: "services", label: "Services", index: "04" },
+  { id: "training", label: "Training", index: "05" },
+  { id: "contact", label: "Contact", index: "06" },
 ];
 
 /* ─────────────────────────────────────────────
@@ -101,16 +115,17 @@ export const PRODUCTS: Product[] = [
   {
     id: "managers",
     name: "Manager AI",
-    tagline: "Operations intelligence for teams. Coming next.",
+    tagline: "Decision intelligence and workload automation for leaders. Enrolment open.",
     description:
-      "A central AI layer for leaders: decision briefs with evidence, 'ask my documents' knowledge workflows, and one-page AI policies — automation without the hype.",
-    status: "Coming Soon",
+      "A live 8-session program for people who lead teams — workload automation that removes admin at the source, 'ask my documents' knowledge workflows, and one-page decision briefs with evidence. No hype, no vendor lock-in.",
+    status: "Active",
     ctaAvailable: true,
     features: [
-      "One-page AI Decision Briefs with evidence and options",
-      "'Ask my documents' knowledge flow for your team",
-      "A reusable prompt library for your own stack",
-      "Security, data-leak and bias guardrails",
+      "Map a real week into Do / Delegate / Automate / Eliminate",
+      "A reusable manager prompt library",
+      "'Ask my documents' knowledge workflow",
+      "One-page AI Decision Briefs with evidence",
+      "Security, bias and a one-page AI policy",
       "A 30-day AI implementation roadmap",
     ],
   },

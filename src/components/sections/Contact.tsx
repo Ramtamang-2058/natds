@@ -47,7 +47,7 @@ export function Contact() {
             <ul className="mt-10 space-y-2.5">
               {[
                 {label: "Researcher Program", href: WHATSAPP_LINKS.researcher},
-                {label: "Manager AI waitlist", href: WHATSAPP_LINKS.managers},
+                {label: "Managers course", href: WHATSAPP_LINKS.managers},
                 {label: "General enquiry", href: WHATSAPP_LINKS.general},
                 {label: `Email · ${BRAND.email}`, href: `mailto:${BRAND.email}`},
               ].map((link) => (

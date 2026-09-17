@@ -1,6 +1,6 @@
 import {ArrowUpRight} from "lucide-react";
 import {motion} from "motion/react";
-import {TRAINING_PROGRAMS, WHATSAPP_LINKS} from "@/data";
+import {PROGRAM_WA_LINK, TRAINING_PROGRAMS, WHATSAPP_LINKS} from "@/data";
 
 export function Training() {
   return (
@@ -23,6 +23,7 @@ export function Training() {
           {TRAINING_PROGRAMS.map((program, i) => (
             <motion.article
               key={program.id}
+              id={program.id}
               initial={{opacity: 0, y: 12}}
               whileInView={{opacity: 1, y: 0}}
               viewport={{once: true, margin: "-40px"}}
@@ -47,7 +48,7 @@ export function Training() {
                 {program.target} · {program.duration}
               </p>
               <a
-                href={WHATSAPP_LINKS.general}
+                href={PROGRAM_WA_LINK[program.id] ?? WHATSAPP_LINKS.general}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink transition-colors group-hover:text-accent"

@@ -16,13 +16,13 @@ export function ManagerAI() {
           className="grid grid-cols-1 gap-10 lg:grid-cols-12"
         >
           <div className="lg:col-span-6">
-            <p className="kicker mb-6">Coming next</p>
+            <p className="kicker mb-6">Live program</p>
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
               <h2 className="font-display text-4xl font-normal leading-[1.06] tracking-[-0.01em] sm:text-6xl">
                 {manager.name}
               </h2>
-              <span className="rounded-full border border-ink-3 px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-ink-3">
-                coming soon
+              <span className="rounded-full border border-accent px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.14em] text-accent">
+                open for enrolment
               </span>
             </div>
             <p className="mt-4 font-display text-xl font-light italic text-accent">
@@ -35,11 +35,14 @@ export function ManagerAI() {
               href={WHATSAPP_LINKS.managers}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-9 inline-flex items-center gap-2 border-b-2 border-accent pb-1 text-sm font-medium text-ink transition-colors hover:text-accent"
+              className="btn-accent mt-9"
             >
-              Join the waitlist
+              Book via WhatsApp
               <ArrowUpRight className="h-4 w-4" />
             </a>
+            <p className="caption mt-4 text-ink-3">
+              8 sessions · 2 hrs each · small groups
+            </p>
           </div>
 
           <div className="lg:col-span-6">
