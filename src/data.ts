@@ -1,10 +1,10 @@
 import type {
   ApproachPoint,
   EventItem,
+  FieldNote,
   HeroMedia,
-  Manifesto,
   NavLink,
-  Product,
+  Sector,
   Service,
   TrainingProgram,
 } from "./types";
@@ -12,10 +12,10 @@ import type {
 export type {
   ApproachPoint,
   EventItem,
+  FieldNote,
   HeroMedia,
-  Manifesto,
   NavLink,
-  Product,
+  Sector,
   Service,
   TrainingProgram,
 };
@@ -34,170 +34,154 @@ export const BRAND = {
   location: "Kathmandu, Nepal",
 };
 
-const wa = BRAND.whatsappNumber;
+/** Build a wa.me link with a pre-filled message. */
+export const waLink = (text: string) =>
+  `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(text)}`;
 
 export const WHATSAPP_LINKS = {
-  general: `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Hello NATDS! I'd like to learn more about your AI & tech solutions."
-  )}`,
-  researcher: `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Hi NATDS! I'm interested in the Researcher Program. Please share the details."
-  )}`,
-  managers: `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Hi NATDS! I'm interested in the AI for Managers & Executives course (8 sessions \u00b7 2 hrs each). Please share the details."
-  )}`,
-  students: `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Hi NATDS! I'm interested in the AI for Students & Learners program. Please share the syllabus."
-  )}`,
-  professionals: `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Hi NATDS! I'm interested in the AI for Professionals & Creatives program. Please share the syllabus."
-  )}`,
-};
-
-export const PROGRAM_WA_LINK: Record<string, string> = {
-  "prog-researchers": WHATSAPP_LINKS.researcher,
-  "prog-managers": WHATSAPP_LINKS.managers,
-  "prog-students": WHATSAPP_LINKS.students,
-  "prog-professionals": WHATSAPP_LINKS.professionals,
+  general: waLink("Hello NATDS! I'd like to talk about AI for my organisation."),
 };
 
 /* ─────────────────────────────────────────────
    Navigation
 ───────────────────────────────────────────── */
 export const NAV_LINKS: NavLink[] = [
-  { id: "research", label: "Research", index: "01" },
-  { id: "events", label: "Events", index: "02" },
-  { id: "managers", label: "Managers", index: "03" },
-  { id: "services", label: "Services", index: "04" },
-  { id: "training", label: "Training", index: "05" },
-  { id: "contact", label: "Contact", index: "06" },
+  { id: "sectors", label: "Sectors" },
+  { id: "services", label: "Services" },
+  { id: "programs", label: "Programs" },
+  { id: "work", label: "Work" },
+  { id: "notes", label: "Notes" },
+  { id: "contact", label: "Contact" },
 ];
 
 /* ─────────────────────────────────────────────
    Hero
 ───────────────────────────────────────────── */
 export const HERO_MEDIA: HeroMedia = {
-  poster: "/images/events/ime-group/training-back-view.png",
+  poster: "/images/events/prakriti-resource-center/trainer-back-right.jpeg",
   video: "/videos/hero.mp4",
   videoActive: false,
 };
 
-/* ─────────────────────────────────────────────
-   Manifesto (quote bar)
-───────────────────────────────────────────── */
-export const MANIFESTO: Manifesto = {
-  quote:
-    "Research isn't the search for answers. It's the discipline of asking better questions — and AI lets Nepali researchers ask them at the frontier.",
-  cite: "NATDS Research Lab, 2025",
-};
-
-/* ─────────────────────────────────────────────
-   Products
-───────────────────────────────────────────── */
-export const PRODUCTS: Product[] = [
-  {
-    id: "research",
-    name: "Researcher Program",
-    tagline: "The flagship. AI methods for people who do real research.",
-    description:
-      "A 2-week intensive lab for academics, thesis writers and research teams in Nepal. Literature mining, deep synthesis, verification, reproducible analysis and citation-aware writing — taught as craft, not as prompt tricks.",
-    status: "Active",
-    ctaAvailable: true,
-    features: [
-      "Systematic literature review & mining across scholar repositories",
-      "Deep reading and synthesis with the tools researchers actually use",
-      "Evidence verification — every claim traceable to a source",
-      "Quantitative & qualitative analysis pipelines explained",
-      "Citation discipline and AI-aware academic writing",
-      "A connected knowledge base you own and keep",
-    ],
-  },
-  {
-    id: "managers",
-    name: "AI for Managers & Executives",
-    tagline: "Decision intelligence and workload automation for leaders. Enrolment open.",
-    description:
-      "A live 8-session program for people who lead teams — workload automation that removes admin at the source, 'ask my documents' knowledge workflows, and one-page decision briefs with evidence. No hype, no vendor lock-in.",
-    status: "Active",
-    ctaAvailable: true,
-    features: [
-      "Map a real week into Do / Delegate / Automate / Eliminate",
-      "A reusable manager prompt library",
-      "'Ask my documents' knowledge workflow",
-      "One-page AI Decision Briefs with evidence",
-      "Security, bias and a one-page AI policy",
-      "A 30-day AI implementation roadmap",
-    ],
-  },
+/** Names shown in the "worked with" strip — real engagements only. */
+export const CLIENTS: string[] = [
+  "IME Group",
+  "Prakriti Resource Center",
+  "Hydropower suppliers",
+  "Researchers & universities",
 ];
 
 /* ─────────────────────────────────────────────
-   Recent events (photo gallery)
-   → drop images into public/images/events/<slug>/
-   and update imagePaths here. See AGENTS.md.
+   Sectors (interactive switcher)
 ───────────────────────────────────────────── */
-export const EVENTS: EventItem[] = [
+export const SECTORS: Sector[] = [
   {
-    id: "prakriti-resource-center",
-    title: "Prakriti Resource Center",
-    location: "On-site training · team session",
-    dateLabel: "Recent",
-    note: "AI & digital skills training for the Prakriti Resource Center team — guided sessions, hands-on practice and group learning.",
-    imagePaths: [
-      "/images/events/prakriti-resource-center/training-front-right.jpeg",
-      "/images/events/prakriti-resource-center/teaching-trainer-and-trainee.jpeg",
-      "/images/events/prakriti-resource-center/trainees-reading-board.jpeg",
-      "/images/events/prakriti-resource-center/trainee-asking-question.jpeg",
+    id: "energy",
+    name: "Hydropower & energy",
+    headline: "Tenders, plant logs and supplier quotes, handled in hours.",
+    summary:
+      "Hydropower developers and equipment suppliers run on documents: BOQs, specs, O&M manuals, compliance filings. We build tools that read them, compare them and draft from them, so engineers spend their time on the plant.",
+    useCases: [
+      { title: "Tender and BOQ comparison", detail: "Line up supplier quotes against the spec sheet and flag gaps, price outliers and missing items." },
+      { title: "Generation and outage reports", detail: "Turn daily logs and spreadsheets into the weekly report management actually reads." },
+      { title: "Ask-the-manual assistant", detail: "O&M staff ask questions of turbine manuals and SOPs, and get answers with page references." },
+      { title: "Compliance drafting", detail: "First drafts of EIA summaries, licence correspondence and progress reports from your own records." },
     ],
+    proof: "Working with hydropower equipment suppliers in Nepal.",
+    engagement: "Automation pilot, 4 to 6 weeks",
+    waText: "Hi NATDS! I work in hydropower / energy and want to discuss AI for our documents and reporting.",
   },
   {
-    id: "ime-group",
-    title: "IME Group",
-    location: "Corporate AI upskilling · team training",
-    dateLabel: "Recent",
-    note: "The IME Group team through an intensive AI & digital skills program — interactive sessions, hands-on practice and certification.",
-    imagePaths: [
-      "/images/events/ime-group/group.jpg",
-      "/images/events/ime-group/session.jpg",
-      "/images/events/ime-group/certification.jpg",
-      "/images/events/ime-group/certification-female-participants.png",
+    id: "finance",
+    name: "Banking & finance",
+    headline: "Faster customer answers, cleaner internal reporting.",
+    summary:
+      "Banks, remittance and insurance teams deal with policy circulars, KYC paperwork and repetitive customer questions. We train staff to use AI safely and build assistants that stay inside your policies.",
+    useCases: [
+      { title: "Staff AI upskilling", detail: "Hands-on training for branch, operations and head-office teams, with certification." },
+      { title: "Policy and circular Q&A", detail: "Search every NRB circular and internal policy in plain Nepali or English." },
+      { title: "Document intake", detail: "Pull fields out of forms and scanned documents into your systems, with a human check." },
+      { title: "Report drafting", detail: "Monthly MIS and board summaries drafted from your own numbers." },
     ],
-  },
-];
-
-/* ─────────────────────────────────────────────
-   Services (editorial list)
-───────────────────────────────────────────── */
-export const SERVICES: Service[] = [
-  {
-    id: "research",
-    title: "AI for Research",
-    description: "Research-grade AI systems and labs for scholars, institutions and independent researchers.",
-    note: "Flagship discipline",
-  },
-  {
-    id: "training",
-    title: "AI Training",
-    description: "Structured programs for researchers, students, teachers, managers and organisations.",
-    note: "Hands-on, small groups",
-  },
-  {
-    id: "automation",
-    title: "AI Automation",
-    description: "Workflow automations, document parsers and AI agents that free teams for deeper work.",
-    note: "Start small, measure fast",
+    proof: "Trained the IME Group team, with certification.",
+    engagement: "Team training plus one workflow pilot",
+    waText: "Hi NATDS! I'm from a bank / finance company and want to discuss AI training or automation.",
   },
   {
     id: "development",
-    title: "AI Product Development",
-    description: "Custom applications engineered for Nepali language, culture and regulation.",
-    note: "Local first",
+    name: "NGOs & development",
+    headline: "Less time on donor reports, more time in the field.",
+    summary:
+      "Development organisations write constantly: proposals, donor reports, case stories, M&E summaries. We teach teams to draft faster without losing their voice, and to make sense of survey data.",
+    useCases: [
+      { title: "Proposal and donor reports", detail: "Structured drafting workflows that reuse your past reports and logframes." },
+      { title: "Field survey analysis", detail: "Clean, code and summarise survey responses, including open-ended answers." },
+      { title: "Knowledge base", detail: "One searchable place for project documents, so new staff find answers on day one." },
+      { title: "Digital skills training", detail: "Practical sessions for programme and admin staff, at your office." },
+    ],
+    proof: "Trained the Prakriti Resource Center team on-site.",
+    engagement: "On-site training, 1 to 3 days",
+    waText: "Hi NATDS! I'm from an NGO / development organisation and want to discuss AI training.",
+  },
+  {
+    id: "research",
+    name: "Research & academia",
+    headline: "From literature search to a citation-ready draft.",
+    summary:
+      "Thesis writers, faculty and research teams use AI badly when nobody shows them how. Our Researcher Program teaches literature mining, synthesis, analysis and honest citation as a method.",
+    useCases: [
+      { title: "Systematic literature review", detail: "Search, screen and map a field with Semantic Scholar, Elicit and Google Scholar." },
+      { title: "Deep reading and synthesis", detail: "Work across dozens of papers with NotebookLM and frontier models, every claim sourced." },
+      { title: "Analysis pipelines", detail: "Quantitative and qualitative analysis with results you can explain to a committee." },
+      { title: "Writing with citations", detail: "AI-aware academic writing that survives peer review and plagiarism checks." },
+    ],
+    engagement: "Researcher Program, 2-week intensive",
+    waText: "Hi NATDS! I'm interested in the Researcher Program. Please share the details.",
+  },
+  {
+    id: "trade",
+    name: "Trade & supply",
+    headline: "Orders, stock and quotations without the copy-paste.",
+    summary:
+      "Distributors, manufacturers and suppliers lose hours moving numbers between WhatsApp, Excel and email. We automate the repetitive parts and give owners a clear view of the business.",
+    useCases: [
+      { title: "Quotation generator", detail: "Produce accurate quotes from your price list in minutes, in your format." },
+      { title: "Order and stock sheets", detail: "Keep inventory and order sheets in sync automatically." },
+      { title: "Sales dashboards", detail: "A weekly view of what sold, what's late and who owes what." },
+      { title: "Customer replies", detail: "Draft replies to common enquiries, reviewed by your team before sending." },
+    ],
+    engagement: "Automation pilot, 3 to 4 weeks",
+    waText: "Hi NATDS! We're a trading / supply business and want to automate orders, stock or quotations.",
+  },
+];
+
+/* ─────────────────────────────────────────────
+   Services
+───────────────────────────────────────────── */
+export const SERVICES: Service[] = [
+  {
+    id: "training",
+    title: "Team training",
+    description: "Hands-on AI sessions for your staff, built around the documents and tasks they already handle.",
+    deliverables: ["On-site or online", "Certificates", "Prompt library to keep"],
+  },
+  {
+    id: "automation",
+    title: "Workflow automation",
+    description: "We pick one slow, repetitive workflow, automate it, and measure the hours saved before doing the next.",
+    deliverables: ["Pilot in weeks", "Measured results", "Your team trained to run it"],
+  },
+  {
+    id: "products",
+    title: "Custom AI tools",
+    description: "Document Q&A, report generators and assistants that work in Nepali and English, on your data.",
+    deliverables: ["Built for Nepali context", "Runs on your accounts", "Documented handover"],
   },
   {
     id: "consulting",
-    title: "AI Consulting",
-    description: "Digital transformation roadmaps grounded in feasibility, risk and compliance.",
-    note: "No vendor lock-in",
+    title: "AI strategy & policy",
+    description: "Where AI fits in your organisation, what it will cost, and a one-page policy your staff can follow.",
+    deliverables: ["Feasibility review", "Risk and data policy", "90-day roadmap"],
   },
 ];
 
@@ -206,85 +190,174 @@ export const SERVICES: Service[] = [
 ───────────────────────────────────────────── */
 export const TRAINING_PROGRAMS: TrainingProgram[] = [
   {
-    id: "prog-researchers",
-    title: "AI for Researchers & Scholars",
-    description: "The complete craft of modern research with AI — from literature to citations.",
-    target: "Academics, thesis writers & research teams",
-    duration: "2-Week Intensive Lab",
-    featured: true,
-    syllabus: [
-      "Literature search: Google Scholar, Semantic Scholar & Elicit",
-      "Deep reading & synthesis: NotebookLM with Gemini, GPT & Claude",
-      "Verification: research-grounded answer engines",
-      "Knowledge base: Zotero, Obsidian & connected notes",
-      "Quantitative analysis with explained results",
-      "Qualitative analysis: AI-assisted thematic coding",
-      "Academic writing: citation discipline and AI-aware drafting",
-    ],
-  },
-  {
     id: "prog-managers",
     title: "AI for Managers & Executives",
-    description: "Decision intelligence and workload automation for people who lead.",
-    target: "Managers, team leads & operations staff",
-    duration: "8 Sessions · 2 hrs each",
+    description: "Decision intelligence and workload automation for people who lead teams. No hype, no vendor lock-in.",
+    target: "Managers, team leads and operations staff",
+    duration: "8 sessions, 2 hours each",
+    featured: true,
     syllabus: [
-      "Map a real week into Do / Delegate / Automate / Eliminate",
-      "A reusable manager prompt library",
-      "'Ask my documents' knowledge workflow",
-      "One-page AI Decision Briefs with evidence",
+      "Map a real week into do, delegate, automate, eliminate",
+      "Build a reusable manager prompt library",
+      "Set up an 'ask my documents' knowledge workflow",
+      "Write one-page decision briefs with evidence",
       "Security, bias and a one-page AI policy",
-      "A 30-day AI implementation roadmap",
+      "Leave with a 30-day implementation roadmap",
     ],
+    waText: "Hi NATDS! I'm interested in the AI for Managers & Executives course (8 sessions, 2 hrs each). Please share the details.",
   },
   {
-    id: "prog-students",
-    title: "AI for Students & Learners",
-    description: "AI literacy and hands-on building for the next generation.",
-    target: "High-school, bachelors & lifelong learners",
-    duration: "4-Week Bootcamp",
+    id: "prog-researchers",
+    title: "Researcher Program",
+    description: "AI methods for people who do real research: literature, synthesis, analysis and citation-aware writing.",
+    target: "Academics, thesis writers and research teams",
+    duration: "2-week intensive",
+    featured: true,
     syllabus: [
-      "Prompt engineering fundamentals",
-      "Building small AI prototypes",
-      "AI for research, study and projects",
-      "Ethics, bias and safe usage",
+      "Literature search with Google Scholar, Semantic Scholar and Elicit",
+      "Deep reading and synthesis with NotebookLM, Gemini, GPT and Claude",
+      "Verification with research-grounded answer engines",
+      "A knowledge base in Zotero and Obsidian",
+      "Quantitative analysis with explained results",
+      "Qualitative analysis and AI-assisted thematic coding",
+      "Academic writing with citation discipline",
     ],
+    waText: "Hi NATDS! I'm interested in the Researcher Program. Please share the details.",
   },
   {
     id: "prog-professionals",
-    title: "AI for Professionals & Creatives",
-    description: "Practical AI for day-to-day professional output.",
-    target: "Product managers, developers, marketers",
-    duration: "1-Week Academy",
+    title: "AI for Professionals",
+    description: "Practical AI for daily output: admin, content, analysis and low-code tools.",
+    target: "Engineers, marketers, analysts and admin staff",
+    duration: "1-week academy",
     syllabus: [
       "Automating daily admin work",
       "AI-driven content and research workflows",
-      "Conversational business analysis",
-      "Low-code / no-code build-ups",
+      "Conversational data analysis",
+      "Low-code and no-code builds",
+    ],
+    waText: "Hi NATDS! I'm interested in the AI for Professionals program. Please share the syllabus.",
+  },
+  {
+    id: "prog-students",
+    title: "AI for Students",
+    description: "AI literacy and hands-on building for the next generation.",
+    target: "High-school, bachelor's and lifelong learners",
+    duration: "4-week bootcamp",
+    syllabus: [
+      "Prompting fundamentals",
+      "Building small AI prototypes",
+      "AI for study and projects",
+      "Ethics, bias and safe use",
+    ],
+    waText: "Hi NATDS! I'm interested in the AI for Students program. Please share the syllabus.",
+  },
+];
+
+/* ─────────────────────────────────────────────
+   Recent work (photo gallery)
+   → drop images into public/images/events/<slug>/
+   and update imagePaths here. See AGENTS.md.
+───────────────────────────────────────────── */
+export const EVENTS: EventItem[] = [
+  {
+    id: "ime-group",
+    title: "IME Group",
+    sector: "Banking & finance",
+    location: "Corporate AI upskilling, Kathmandu",
+    note: "An intensive AI and digital skills program for the IME Group team: interactive sessions, hands-on practice on real work tasks, and certification for every participant.",
+    imagePaths: [
+      "/images/events/ime-group/group-image.png",
+      "/images/events/ime-group/session.jpg",
+      "/images/events/ime-group/certification.jpg",
+      "/images/events/ime-group/training-back-view.png",
+    ],
+  },
+  {
+    id: "prakriti-resource-center",
+    title: "Prakriti Resource Center",
+    sector: "NGOs & development",
+    location: "On-site team training",
+    note: "AI and digital skills training at the Prakriti Resource Center office: guided sessions, hands-on practice and group problem-solving around the team's own reports.",
+    imagePaths: [
+      "/images/events/prakriti-resource-center/training-front-right.jpeg",
+      "/images/events/prakriti-resource-center/teaching-trainer-and-trainee.jpeg",
+      "/images/events/prakriti-resource-center/trainees-reading-board.jpeg",
+      "/images/events/prakriti-resource-center/trainee-asking-question.jpeg",
     ],
   },
 ];
 
 /* ─────────────────────────────────────────────
-   Approach
+   Field Notes (editorial SEO snippets)
+   → each note links to a static article at
+     public/field-notes/<slug>.html — update both.
+───────────────────────────────────────────── */
+export const FIELD_NOTES: FieldNote[] = [
+  {
+    id: "note-managers-nepal",
+    slug: "ai-for-managers-nepal",
+    title: "AI for Managers in Nepal: A practical first week",
+    date: "Sep 2026",
+    excerpt:
+      "What 'AI for managers' actually means at a Kathmandu company — where a manager's week gives up hours first, and how an 8-session program maps onto it.",
+    keywords: ["ai for managers", "manager ai", "ai for managers nepal", "ai training kathmandu"],
+  },
+  {
+    id: "note-business-kathmandu",
+    slug: "ai-tools-for-business-kathmandu",
+    title: "AI tools for business in Kathmandu: honest picks",
+    date: "Aug 2026",
+    excerpt:
+      "The tools Nepali businesses actually adopt — document Q&A, meeting summaries, and decision briefs — and which ones quietly fail in a low-data environment.",
+    keywords: ["ai for business", "ai tools kathmandu", "ai at kathmandu", "ai automation nepal"],
+  },
+  {
+    id: "note-research-nepal",
+    slug: "ai-for-researchers-nepal",
+    title: "AI for researchers in Nepal: from literature to citations",
+    date: "Aug 2026",
+    excerpt:
+      "How NATDS's Researcher Program teaches literature mining, synthesis and citation-aware writing to academics and thesis writers across Nepal.",
+    keywords: ["ai for researchers", "ai research nepal", "researcher program", "research ai kathmandu"],
+  },
+  {
+    id: "note-skill-gap",
+    slug: "ai-skill-gap-nepal",
+    title: "The AI skill gap in Nepal is an operations gap",
+    date: "Jul 2026",
+    excerpt:
+      "Most Nepali organisations don't lack AI tools — they lack the workflows to use them. Why training beats tooling, and where to start.",
+    keywords: ["ai training nepal", "ai upskilling", "digital skills kathmandu", "ai adoption nepal"],
+  },
+];
+
+/* ─────────────────────────────────────────────
+   Approach (how an engagement runs — a real sequence)
 ───────────────────────────────────────────── */
 export const APPROACH: ApproachPoint[] = [
   {
-    id: "ap-01",
-    index: "01",
-    title: "Observe",
-    description: "We sit inside your real workflow first — the literature you read, the reports you write, the decisions you wait on.",
+    id: "ap-map",
+    title: "Map the work",
+    duration: "Week 1",
+    description: "We sit with your team and list where the hours go: the reports, the documents, the waiting.",
   },
   {
-    id: "ap-02",
-    index: "02",
-    title: "Build small",
-    description: "We prototype the smallest system that delivers a measurable win, with evidence at every step.",
+    id: "ap-pilot",
+    title: "Pilot one workflow",
+    duration: "Weeks 2–4",
+    description: "We automate the single workflow with the clearest payoff and measure the time it saves.",
   },
   {
-    id: "ap-03",
-    index: "03",
-    title: "Hand it over",
-    description: "Deployed, documented and taught — a system your team owns and extends, not a black box.",
+    id: "ap-train",
+    title: "Train the team",
+    duration: "Alongside",
+    description: "Your people learn to run it, fix it and extend it, in sessions built on their own work.",
+  },
+  {
+    id: "ap-handover",
+    title: "Hand over",
+    duration: "Week 5 onward",
+    description: "Documented, on your accounts, yours to keep. We stay on call while it beds in.",
   },
 ];

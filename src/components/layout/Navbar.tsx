@@ -10,90 +10,86 @@ interface NavbarProps {
   handleNavClick: (id: string) => (e?: React.MouseEvent) => void;
 }
 
-function NavLogo() {
-  return (
-    <a
-      href="#top"
-      onClick={(e) => {
-        e.preventDefault();
-        window.scrollTo({top: 0, behavior: "smooth"});
-      }}
-      className="flex items-baseline gap-2"
-      aria-label={`${BRAND.name} home`}
-    >
-      <Wordmark className="text-[1.25rem]" />
-    </a>
-  );
-}
-
 export function Navbar(props: NavbarProps) {
-  const {activeSection, handleNavClick} = props;
+  const {scrolled, activeSection, handleNavClick} = props;
   const [open, setOpen] = useState(false);
 
   return (
-    <header className={`fixed left-0 right-0 top-0 z-50 nav-glass`}>
-      <div className="mx-auto flex h-[4.25rem] max-w-6xl items-center justify-between px-4 sm:px-6">
-        <NavLogo />
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-[border-color,background-color] duration-200 ${
+        scrolled || open ? "nav-solid border-b border-line" : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a
+          href="#top"
+          onClick={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            window.scrollTo({top: 0, behavior: "smooth"});
+          }}
+          aria-label={`${BRAND.name} home`}
+        >
+          <Wordmark />
+        </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
-          {NAV_LINKS.map((link, i) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              onClick={handleNavClick(link.id)}
-              className={`flex items-baseline gap-1.5 rounded-full px-3 py-1.5 text-[0.82rem] font-medium transition-colors ${
-                activeSection === link.id
-                  ? "bg-paper-2 text-accent"
-                  : "text-ink-2 hover:text-ink hover:bg-paper-2/60"
-              }`}
-            >
-              <span className="font-mono text-[0.58rem] tracking-wide text-ink-3">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {link.label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          {NAV_LINKS.filter((l) => l.id !== "contact").map((link) => {
+            const active = activeSection === link.id;
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={handleNavClick(link.id)}
+                aria-current={active ? "true" : undefined}
+                className={`relative px-3.5 py-2 text-[0.92rem] font-medium transition-colors ${
+                  active ? "text-ink" : "text-ink-2 hover:text-ink"
+                }`}
+              >
+                {link.label}
+                {active && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute inset-x-3.5 -bottom-0.5 h-[2px] bg-crimson"
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
-        {/* Desktop CTA */}
         <a
           href={WHATSAPP_LINKS.general}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-accent hidden lg:inline-flex"
+          className="btn btn-ink hidden !py-2.5 text-[0.88rem] lg:inline-flex"
         >
-          Contact
+          Talk to us
         </a>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
           onClick={() => setOpen(!open)}
-          className="flex h-10 w-10 items-center justify-center lg:hidden"
+          className="-mr-2 flex h-11 w-11 items-center justify-center lg:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? (
-            <X className="h-5 w-5 text-ink" />
-          ) : (
-            <Menu className="h-5 w-5 text-ink" />
-          )}
+          {open ? <X className="h-5 w-5 text-ink" /> : <Menu className="h-5 w-5 text-ink" />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.nav
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
-            className="hairline-t lg:hidden"
+            initial={{height: 0, opacity: 0}}
+            animate={{height: "auto", opacity: 1}}
+            exit={{height: 0, opacity: 0}}
+            transition={{duration: 0.22}}
+            className="overflow-hidden border-t border-line lg:hidden"
             aria-label="Mobile"
           >
-            <div className="mx-auto max-w-6xl px-6 py-4">
-              {NAV_LINKS.map((link, i) => (
+            <div className="px-4 pb-6 pt-2 sm:px-6">
+              {NAV_LINKS.map((link) => (
                 <a
                   key={link.id}
                   href={`#${link.id}`}
@@ -101,23 +97,18 @@ export function Navbar(props: NavbarProps) {
                     setOpen(false);
                     handleNavClick(link.id)(e);
                   }}
-                  className="flex items-baseline gap-3 border-b border-line py-3.5"
+                  className="display-sm block border-b border-line py-3.5 text-[1.35rem] text-ink"
                 >
-                  <span className="font-mono text-[0.58rem] text-ink-3">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="font-display text-xl font-medium text-ink">
-                    {link.label}
-                  </span>
+                  {link.label}
                 </a>
               ))}
               <a
                 href={WHATSAPP_LINKS.general}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-accent mt-4 w-full justify-center"
+                className="btn btn-primary mt-5 w-full justify-center"
               >
-                Contact
+                Message us on WhatsApp
               </a>
             </div>
           </motion.nav>

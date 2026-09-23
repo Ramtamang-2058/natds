@@ -1,115 +1,120 @@
-import {Send} from "lucide-react";
 import {FormEvent, useState} from "react";
-import {motion} from "motion/react";
-import {BRAND, WHATSAPP_LINKS} from "@/data";
+import {BRAND, SECTORS, WHATSAPP_LINKS, waLink} from "@/data";
 
 export function Contact() {
   const [name, setName] = useState("");
+  const [org, setOrg] = useState("");
+  const [sector, setSector] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const text = encodeURIComponent(
-      `Hello NATDS! My name is ${name.trim() || "there"}. ${message.trim()}`
-    );
-    window.open(`https://wa.me/${BRAND.whatsappNumber}?text=${text}`, "_blank");
+    const parts = [
+      `Hello NATDS! My name is ${name.trim()}.`,
+      org.trim() && `I'm with ${org.trim()}.`,
+      sector && `Sector: ${sector}.`,
+      message.trim(),
+    ].filter(Boolean);
+    window.open(waLink(parts.join(" ")), "_blank", "noopener");
   };
 
+  const field =
+    "mt-2 w-full rounded-[3px] border border-line-dark bg-night-2 px-3.5 py-3 text-[1rem] text-snow placeholder:text-ink-3 outline-none transition-colors focus:border-glacier";
+
   return (
-    <section id="contact" className="hairline-t bg-paper-2 py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <motion.div
-          initial={{opacity: 0, y: 16}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, margin: "-80px"}}
-          transition={{duration: 0.7}}
-          className="grid grid-cols-1 gap-12 lg:grid-cols-12"
-        >
-          <div className="lg:col-span-6">
-            <p className="kicker mb-6">Contact</p>
-            <h2 className="font-display text-4xl font-normal leading-[1.06] tracking-[-0.01em] text-ink sm:text-6xl">
-              Let&apos;s start <em className="font-light italic text-accent">something.</em>
-            </h2>
-            <p className="mt-6 max-w-md text-[0.95rem] leading-relaxed text-ink-2">
-              The fastest way to reach us is WhatsApp — a human answers, usually within the hour.
-            </p>
+    <section id="contact" className="bg-night py-20 text-snow lg:py-28">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8">
+        <div className="lg:col-span-6">
+          <h2 className="display text-[2.6rem] sm:text-[3.6rem] lg:text-[4.4rem]">
+            Tell us where the hours go.
+          </h2>
+          <p className="measure mt-6 text-[1.08rem] text-glacier">
+            WhatsApp is the fastest way to reach us. A person on our team replies,
+            usually within the hour during Kathmandu working hours.
+          </p>
 
-            <a
-              href={WHATSAPP_LINKS.general}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-9 inline-block border-b-2 border-accent pb-2 font-display text-3xl font-normal tracking-[-0.01em] transition-colors hover:text-accent sm:text-4xl"
-            >
-              {BRAND.whatsappDisplay}
-            </a>
-            <p className="caption mt-3 text-ink-3">WhatsApp · {BRAND.location}</p>
+          <a
+            href={WHATSAPP_LINKS.general}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="num mt-10 inline-block border-b-[3px] border-crimson pb-1 text-[1.9rem] tracking-[-0.02em] text-snow transition-colors hover:text-glacier sm:text-[2.6rem]"
+          >
+            {BRAND.whatsappDisplay}
+          </a>
 
-            <ul className="mt-10 space-y-2.5">
-              {[
-                {label: "Researcher Program", href: WHATSAPP_LINKS.researcher},
-                {label: "Managers course", href: WHATSAPP_LINKS.managers},
-                {label: "General enquiry", href: WHATSAPP_LINKS.general},
-                {label: `Email · ${BRAND.email}`, href: `mailto:${BRAND.email}`},
-              ].map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-baseline gap-3 text-[0.95rem] text-ink-2 transition-colors hover:text-ink"
-                  >
-                    <span className="h-px w-4 bg-accent" />
-                    {link.label}
-                  </a>
-                </li>
+          <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div>
+              <dt className="label !text-glacier/80">Email</dt>
+              <dd className="mt-1">
+                <a href={`mailto:${BRAND.email}`} className="link text-[1rem] text-snow">
+                  {BRAND.email}
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className="label !text-glacier/80">Office</dt>
+              <dd className="mt-1 text-[1rem] text-snow">{BRAND.location}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <form onSubmit={handleSubmit} className="rounded-[4px] border border-line-dark p-6 sm:p-9 lg:col-span-6">
+          <h3 className="display-sm text-[1.4rem]">Send a message</h3>
+          <p className="mt-1 text-[0.92rem] text-glacier">This opens WhatsApp with your message filled in.</p>
+
+          <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2">
+            <label className="block">
+              <span className="label !text-glacier">Your name</span>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                autoComplete="name"
+                className={field}
+                required
+              />
+            </label>
+            <label className="block">
+              <span className="label !text-glacier">Organisation</span>
+              <input
+                type="text"
+                value={org}
+                onChange={(e) => setOrg(e.target.value)}
+                autoComplete="organization"
+                className={field}
+              />
+            </label>
+          </div>
+
+          <label className="mt-5 block">
+            <span className="label !text-glacier">Sector</span>
+            <select value={sector} onChange={(e) => setSector(e.target.value)} className={field}>
+              <option value="">Choose one</option>
+              {SECTORS.map((s) => (
+                <option key={s.id} value={s.name}>
+                  {s.name}
+                </option>
               ))}
-            </ul>
-          </div>
+              <option value="Other">Other</option>
+            </select>
+          </label>
 
-          <div className="lg:col-span-6">
-            <form
-              onSubmit={handleSubmit}
-              className="card-surface p-7 sm:p-9"
-            >
-              <div className="flex items-baseline justify-between">
-                <h3 className="font-display text-2xl font-normal tracking-[-0.01em]">Quick message</h3>
-                <span className="caption text-ink-3">opens in WhatsApp</span>
-              </div>
+          <label className="mt-5 block">
+            <span className="label !text-glacier">What do you want help with?</span>
+            <textarea
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              rows={4}
+              placeholder="For example: our monthly generation report takes three days to put together."
+              className={`${field} resize-none`}
+              required
+            />
+          </label>
 
-              <label className="mt-7 block">
-                <span className="caption">Your name</span>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Janaki Rana"
-                  className="mt-2 w-full border-b border-line bg-transparent px-1 py-3 text-[0.95rem] text-ink placeholder:text-ink-3 outline-none transition-colors focus:border-accent"
-                  required
-                />
-              </label>
-
-              <label className="mt-6 block">
-                <span className="caption">Message</span>
-                <textarea
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={4}
-                  placeholder="Tell us about the research or workflow you want to transform…"
-                  className="mt-2 w-full resize-none border-b border-line bg-transparent px-1 py-3 text-[0.95rem] text-ink placeholder:text-ink-3 outline-none transition-colors focus:border-accent"
-                  required
-                />
-              </label>
-
-              <button
-                type="submit"
-                className="btn-accent mt-8"
-              >
-                <Send className="h-4 w-4" />
-                Send via WhatsApp
-              </button>
-            </form>
-          </div>
-        </motion.div>
+          <button type="submit" className="btn btn-primary mt-7 w-full justify-center sm:w-auto">
+            Send on WhatsApp
+          </button>
+        </form>
       </div>
     </section>
   );

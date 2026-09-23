@@ -1,4 +1,4 @@
-import {ArrowUp} from "lucide-react";
+import {ArrowUp, MessageCircle} from "lucide-react";
 import {AnimatePresence, motion} from "motion/react";
 import {WHATSAPP_LINKS} from "@/data";
 
@@ -11,16 +11,16 @@ export function WhatsAppDock(props: WhatsAppDockProps) {
   const {showTopButton, scrollTop} = props;
 
   return (
-    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
+    <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
       <AnimatePresence>
         {showTopButton && (
           <motion.button
             type="button"
-            initial={{opacity: 0, scale: 0.8}}
-            animate={{opacity: 1, scale: 1}}
-            exit={{opacity: 0, scale: 0.8}}
+            initial={{opacity: 0, y: 6}}
+            animate={{opacity: 1, y: 0}}
+            exit={{opacity: 0, y: 6}}
             onClick={scrollTop}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-surface text-ink transition-colors hover:bg-paper-2"
+            className="flex h-10 w-10 items-center justify-center rounded-[3px] border border-line bg-surface text-ink transition-colors hover:bg-mist"
             aria-label="Back to top"
           >
             <ArrowUp className="h-4 w-4" />
@@ -32,10 +32,11 @@ export function WhatsAppDock(props: WhatsAppDockProps) {
         href={WHATSAPP_LINKS.general}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex h-12 w-12 items-center justify-center gap-1 rounded-full bg-accent font-mono text-xs font-medium text-paper shadow-[0_6px_24px_rgba(32,80,60,0.28)] transition-all hover:bg-accent-deep hover:shadow-[0_6px_28px_rgba(32,80,60,0.36)]"
+        className="flex h-12 items-center gap-2 rounded-[3px] bg-crimson px-4 text-[0.92rem] font-semibold text-white shadow-[0_8px_24px_-8px_rgba(192,25,44,0.6)] transition-colors hover:bg-crimson-deep"
         aria-label="Chat with NATDS on WhatsApp"
       >
-        <span className="translate-x-[1px] transition-transform group-hover:translate-x-0.5">WA</span>
+        <MessageCircle className="h-5 w-5" />
+        <span className="hidden sm:inline">WhatsApp</span>
       </a>
     </div>
   );

@@ -2,9 +2,9 @@
 
 ## What this is
 
-**NATDS — Nepal AI & Tech Digital Solution.** A static, single-page React + Vite corporate site for AI-for-researchers programs and tech digital solutions. Editorial "field notes" theme — warm paper + deep forest green, gallery-forward with photography. English only. Deployed to GitHub Pages at `natds.safalai.com.np` (repo: `Ramtamang-2058/natds`).
+**NATDS — Nepal AI & Tech Digital Solution.** A static, single-page React + Vite corporate site. NATDS trains teams and builds AI automations for Nepali organisations across sectors — **hydropower & energy, banking & finance, NGOs & development, research & academia, trade & supply**. "Headwater" theme: snow-white ground, river-indigo ink, one rhododendron-crimson accent, a single variable typeface (Archivo) used across its width axis. English only. Deployed to GitHub Pages at `natds.safalai.com.np` (repo: `Ramtamang-2058/natds`).
 
-Primary offering: **Researcher Program** (flagship). Secondary: **Manager AI** (coming soon). Contact is **WhatsApp-first** — direct number `+977 981-8488715`. A prominent **Events gallery** shows recent work (Prakriti Resource Center, Researcher Training) where real photos drop in.
+Signature element: the **Sectors switcher** (`#sectors`) — an accessible tab list on a dark band; each sector shows its own use cases, typical engagement and track record. The hero's sector index opens it pre-selected. Programs (AI for Managers, Researcher Program, Professionals, Students) live in one `#programs` section. Contact is **WhatsApp-first** — direct number `+977 981-8488715`. **Work** (`#work`) shows real engagement photos (IME Group, Prakriti Resource Center).
 
 ## Commands (run from repo root)
 
@@ -34,17 +34,17 @@ npm run clean    # rm -rf dist
 | Directory | Purpose |
 |-----------|---------|
 | `pages/` | `HomePage.tsx` (only page; single-page site, no router) |
-| `components/sections/` | Hero, QuoteBar, ResearcherProgram, Events, ManagerAI, Services, Training, Approach, Contact |
+| `components/sections/` | Hero, Sectors, Services, Programs, Work, Approach, FieldNotes, Contact |
 | `components/layout/` | Navbar, Footer, WhatsAppDock |
 | `components/media/` | `MediaSlot.tsx` (media with ken-burns + graceful placeholder) |
 | `hooks/` | `useNavigation.ts` (smooth-scroll + active section) |
 | `types/` | TypeScript interfaces |
-| `data.ts` | **All content** — brand, links, products, events, services, programs, approach |
+| `data.ts` | **All content** — brand, `waLink()`, clients, sectors, services, programs, events, field notes, approach |
 | `App.tsx`, `main.tsx`, `index.css` | Root wiring + design system |
 
 **Routing:** none (single page). Nav links smooth-scroll to `#section-id` anchors via `useNavigation`.
 
-**Section order (mirrors `HomePage.tsx`):** Hero → QuoteBar (`MANIFESTO` quote) → ResearcherProgram (`#research` 01) → Events (`#events` 02) → ManagerAI (`#managers`) → Services (`#services` 03) → Training (`#training` 04) → Approach → Contact (`#contact` 05). `NAV_LINKS` (research/events/services/training/contact) drives navbar, footer, and `useNavigation` active-section detection — keep ids in sync with rendered sections.
+**Section order (mirrors `HomePage.tsx`):** Hero (`#top`, sector index + "worked with" strip) → Sectors (`#sectors`) → Services (`#services`) → Programs (`#programs`) → Work (`#work`) → Approach → FieldNotes (`#notes`) → Contact (`#contact`). `NAV_LINKS` drives navbar, footer, and `useNavigation` active-section detection — keep ids in sync with rendered sections. Selected sector state lives in `HomePage.tsx`.
 
 ## Configuration
 
@@ -54,24 +54,26 @@ npm run clean    # rm -rf dist
 - **`base: '/'`** — correct for GitHub Pages with a custom root domain. Don't change.
 - **No runtime env vars needed** — see `.env.example`. Site is fully static.
 
-## Design system ("Editorial Studio")
+## Design system ("Headwater")
 
-- **Fonts:** Inter (body), **Fraunces** (display/headings — serif, `font-weight: 400`, `letter-spacing: -0.01em`, italic em accents), **IBM Plex Mono** (labels/captions), loaded via `@import` in `index.css`.
-- **Palette (from `@theme` in `index.css`):** paper `#FAF9F6` (`paper-2` `#F2EFE9` alt bands/card bg, `surface` `#FFFFFF` cards), ink `#1C1A17` (`ink-2` `#55504A`, `ink-3` `#8A837B`), hairline `line` `#E3DFD6`, accent deep forest `#20503C` (`accent-deep` `#16382A`, `accent-wash` `#D7E5DD`).
-- **Tailwind color utilities:** tokens are `--color-*` → use as `bg-paper`, `bg-paper-2`, `bg-surface`, `text-ink`/`text-ink-2`/`text-ink-3`, `border-line`, `text-accent`/`bg-accent`/`bg-accent-deep`. **All-light rhythm** — no dark sections.
-- **Deliberately NOT "vibe-coded":** no neon gradients, no glassmorphism (outside the nav blur), no terminal mocks, no particle/marquee effects. Just hairlines, serif numerals, whitespace and photography.
-- **Motifs in `index.css`:** `.kicker` (green mono micro-label), `.caption` (mono micro-label), `hairline-t/b`, `btn-accent` (solid green pill), `btn-ghost` (outline pill), `.card` (paper-2, radius-12, hover lift), `card-surface` (white), `kenburns` (cinematic zoom), full-page film-grain via `body::after`, green `::selection`, `.nav-glass` (blurred paper navbar).
-- **Section pattern:** `hairline-t` separator, `mx-auto max-w-6xl px-4 sm:px-6`, `py-24 lg:py-32`, 12-column grids, alternating `bg-paper` / `bg-paper-2`.
-- **Motion library:** `motion` (v12, import from `motion/react`) — `whileInView` one-shot reveals (fade-up ~0.2–0.7s); `MotionConfig reducedMotion="user"` in `App.tsx`; `lucide-react` icons.
+- **Type:** one family, **Archivo** variable (loaded via `<link>` in `index.html`), used across its width axis: `.display` (wdth 118, heavy — hero/contact headlines), `.display-md` (section headings), `.display-sm` (card/list titles), body at wdth 100, `.label` (semi-condensed, sentence case — never all caps), `.num` (expanded tabular numerals). No mono, no serif.
+- **Palette (`@theme` in `index.css`):** `snow` `#F4F5F2` (base), `mist` `#E7EBE8` (alt bands), `surface` `#FFFFFF`; `ink` `#0E1A2B`, `ink-2` `#45505F`, `ink-3` `#7A8391`; `line` `#D3D9D6`, `line-dark` `#26354A`; accent `crimson` `#C0192C` (`crimson-deep` `#9A1122`) — use sparingly (primary CTA, active markers); on dark bands `night` `#0E1A2B`, `night-2` `#15243A`, text `glacier` `#A9C9CF`.
+- **Rhythm:** light bands (`bg-snow` / `bg-mist`) with two dark `bg-night` bands (Sectors, Contact) plus the dark footer.
+- **Shape:** squared — buttons 3px radius (`.btn` + `btn-primary` / `btn-ink` / `btn-outline`), media 4px. `.link` draws an underline. Hairlines via `border-line`.
+- **Motion:** one CSS load sequence in the hero (`.rise`, `.fade-in`, `.wipe` with `--d` delay — CSS so content never depends on JS timing). Otherwise motion only answers user action (sector switch, nav underline, mobile menu) via `motion/react`. No scroll-reveal fades. `prefers-reduced-motion` disables all of it.
+- **Numbering** only where the content is a real sequence (syllabus sessions, project steps).
+- **Section pattern:** `mx-auto max-w-7xl px-4 sm:px-6 lg:px-8`, `py-20 lg:py-28`, 12-column grids.
+- **Field-note articles** (`public/field-notes/*.html`) carry their own inline CSS using the same tokens — update them if the palette changes.
 
 ## Key gotchas
 
 1. **WhatsApp is the single contact channel.** Number lives in `src/data.ts` → `BRAND.whatsappNumber` (`9779818488715`). Pre-built links in `WHATSAPP_LINKS`. Update the number in ONE place. The Contact form and all CTAs open `wa.me` links.
-2. **No i18n.** Bilingual (Nepali) deliberately omitted — English only.
-3. **MediaSlot fallback:** every photo/video slot renders a paper-toned placeholder with the expected path as a caption when the file is absent. Add files under `public/` and the placeholders disappear automatically. Do NOT hardcode fallback logic per section.
-4. **Hero media:** hero shows the photo at `HERO_MEDIA.poster` (a real event photo) until `/videos/hero.mp4` exists. To switch to video, drop the file in `public/videos/` and set `HERO_MEDIA.videoActive = true` in `src/data.ts`.
-5. **`scroll-padding-top: 4.5rem`** on `html` keeps anchored sections clear of the fixed navbar.
-6. **ResearcherProgram/ManagerAI read `PRODUCTS[0]` / `PRODUCTS[1]`** (`data.ts`) at module load — reorder `PRODUCTS` and the sections swap content.
+2. **Sector claims must be real.** `SECTORS[].proof` and `CLIENTS` list only real engagements — don't invent client names.
+3. **No i18n.** Bilingual (Nepali) deliberately omitted — English only.
+4. **MediaSlot fallback:** every photo/video slot renders a paper-toned placeholder with the expected path as a caption when the file is absent. Add files under `public/` and the placeholders disappear automatically. Do NOT hardcode fallback logic per section.
+5. **Hero media:** hero shows the photo at `HERO_MEDIA.poster` (a real event photo) until `/videos/hero.mp4` exists. To switch to video, drop the file in `public/videos/` and set `HERO_MEDIA.videoActive = true` in `src/data.ts`.
+6. **`scroll-padding-top: 4.5rem`** on `html` keeps anchored sections clear of the fixed navbar.
+7. **Programs:** `TRAINING_PROGRAMS` entries with `featured: true` render as large syllabus cards; each has its own `waText` for the WhatsApp CTA.
 
 ## Adding new content/data
 
@@ -82,17 +84,17 @@ npm run clean    # rm -rf dist
 
 ## Adding media — events gallery (drop photos here)
 
-Drop photos into `public/images/events/<event>/` and update `imagePaths` in `EVENTS` (`src/data.ts`). Missing files auto-show placeholders — the site never breaks on missing images.
+Drop photos into `public/images/events/<event>/` and update `imagePaths` in `EVENTS` (first path is the wide lead photo) (`src/data.ts`). Missing files auto-show placeholders — the site never breaks on missing images.
 
 | Folder | Event | Photos |
 |--------|-------|--------|
 | `public/images/events/prakriti-resource-center/` | **Prakriti Resource Center** | `training-front-right.jpeg`, `teaching-trainer-and-trainee.jpeg`, `trainees-reading-board.jpeg`, `trainee-asking-question.jpeg` |
-| `public/images/events/ime-group/` | **IME Group** | `group.jpg`, `session.jpg`, `certification.jpg`, `certification-female-participants.png` |
+| `public/images/events/ime-group/` | **IME Group** | `group-image.png`, `session.jpg`, `certification.jpg`, `training-back-view.png` |
 | `public/videos/hero.mp4` | Hero background video | — (hero currently shows `HERO_MEDIA.poster` image until a video exists) |
 
-Hero poster (image shown until a video drops in): `/images/events/ime-group/training-back-view.png`. Set `HERO_MEDIA.videoActive = true` in `src/data.ts` once a real `hero.mp4` exists.
+Hero poster (image shown until a video drops in): `/images/events/prakriti-resource-center/trainer-back-right.jpeg`. Set `HERO_MEDIA.videoActive = true` in `src/data.ts` once a real `hero.mp4` exists.
 
-**Add a new event:** copy an `EVENTS` block in `src/data.ts`, create the folder under `public/images/events/`, add it to the grid in `src/components/sections/Events.tsx` if you want a different layout.
+**Add a new event:** copy an `EVENTS` block in `src/data.ts`, create the folder under `public/images/events/`, adjust `src/components/sections/Work.tsx` if you want a different layout.
 
 Other planned assets:
 

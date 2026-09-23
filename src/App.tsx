@@ -11,7 +11,7 @@ export function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div
-        className="min-h-screen flex flex-col font-sans bg-paper text-ink overflow-x-hidden"
+        className="min-h-screen flex flex-col font-sans bg-snow text-ink overflow-x-hidden"
         id="natds-main"
       >
         <Navbar

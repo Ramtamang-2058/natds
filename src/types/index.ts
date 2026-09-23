@@ -1,24 +1,27 @@
 export interface NavLink {
   id: string;
   label: string;
-  index?: string;
 }
 
-export interface Product {
+export interface Sector {
   id: string;
   name: string;
-  tagline: string;
-  description: string;
-  status: "Active" | "Coming Soon";
-  ctaAvailable: boolean;
-  features: string[];
+  /** one-line problem statement, in the sector's own terms */
+  headline: string;
+  summary: string;
+  /** concrete things NATDS builds or teaches for this sector */
+  useCases: {title: string; detail: string}[];
+  /** who we've worked with in this sector (only real engagements) */
+  proof?: string;
+  engagement: string;
+  waText: string;
 }
 
 export interface Service {
   id: string;
   title: string;
   description: string;
-  note: string;
+  deliverables: string[];
 }
 
 export interface TrainingProgram {
@@ -29,21 +32,33 @@ export interface TrainingProgram {
   duration: string;
   featured?: boolean;
   syllabus: string[];
+  waText: string;
+}
+
+export interface FieldNote {
+  id: string;
+  /** slug used for the article URL and the read-more link */
+  slug: string;
+  title: string;
+  date: string;
+  excerpt: string;
+  /** primary SEO keywords this note targets (used for meta/labels) */
+  keywords: string[];
 }
 
 export interface EventItem {
   id: string;
   title: string;
+  sector: string;
   location: string;
   note: string;
-  dateLabel?: string;
   imagePaths: string[];
 }
 
 export interface ApproachPoint {
   id: string;
-  index: string;
   title: string;
+  duration: string;
   description: string;
 }
 
@@ -54,16 +69,10 @@ export interface HeroMedia {
   videoActive?: boolean;
 }
 
-export interface Manifesto {
-  quote: string;
-  cite: string;
-}
-
 export interface MediaSlotProps {
   src: string;
   alt?: string;
   poster?: string;
   className?: string;
   placeholderLabel?: string;
-  motion?: "kenburns" | "none";
 }

@@ -1,64 +1,42 @@
-import {ArrowUpRight} from "lucide-react";
-import {motion} from "motion/react";
-import {SERVICES, WHATSAPP_LINKS} from "@/data";
+import {SERVICES} from "@/data";
 
 export function Services() {
   return (
-    <section id="services" className="hairline-t bg-paper py-24 lg:py-32">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <motion.div
-          initial={{opacity: 0, y: 16}}
-          whileInView={{opacity: 1, y: 0}}
-          viewport={{once: true, margin: "-80px"}}
-          transition={{duration: 0.7}}
-          className="grid grid-cols-1 gap-10 lg:grid-cols-12"
-        >
-          <div className="lg:col-span-4">
-            <p className="kicker mb-6">Services</p>
-            <h2 className="font-display text-4xl font-normal leading-[1.06] tracking-[-0.01em] text-ink sm:text-5xl">
-              Capabilities,
-              <br />
-              <em className="font-light italic text-accent">kept honest.</em>
-            </h2>
-          </div>
+    <section id="services" className="bg-snow py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
+          <h2 className="display-md text-[2.2rem] text-ink sm:text-[3rem] lg:col-span-6 lg:text-[3.6rem]">
+            Four ways we work with you.
+          </h2>
+          <p className="measure self-end text-[1.05rem] text-ink-2 lg:col-span-5 lg:col-start-8">
+            Most clients start with training or a single automation pilot, then
+            add the rest once the first results are in.
+          </p>
+        </div>
 
-          <div className="lg:col-span-8">
-            <ul className="hairline-t">
-              {SERVICES.map((service, i) => (
-                <motion.li
-                  key={service.id}
-                  initial={{opacity: 0, y: 12}}
-                  whileInView={{opacity: 1, y: 0}}
-                  viewport={{once: true, margin: "-40px"}}
-                  transition={{duration: 0.5, delay: i * 0.05}}
-                  className="hairline-b group grid grid-cols-1 gap-2 py-6 sm:grid-cols-12 sm:items-baseline sm:gap-4"
-                >
-                  <span className="font-mono text-[0.6rem] text-ink-3 sm:col-span-2">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="font-display text-2xl font-normal tracking-[-0.01em] text-ink sm:col-span-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-[0.92rem] leading-relaxed text-ink-2 sm:col-span-5">
-                    {service.description}
-                  </p>
-                  <div className="flex items-baseline justify-between gap-2 sm:col-span-2">
-                    <span className="caption">{service.note}</span>
-                    <a
-                      href={WHATSAPP_LINKS.general}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent transition-transform hover:translate-x-0.5 hover:-translate-y-0.5"
-                      aria-label={`Discuss ${service.title}`}
-                    >
-                      <ArrowUpRight className="h-5 w-5" />
-                    </a>
-                  </div>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
+        <div className="mt-14 grid grid-cols-1 border-t-2 border-ink md:grid-cols-2 lg:grid-cols-4">
+          {SERVICES.map((s, i) => (
+            <article
+              key={s.id}
+              className={`flex flex-col border-line py-8 md:px-6 ${
+                i > 0 ? "border-t md:border-t-0" : ""
+              } ${i % 2 === 1 ? "md:border-l" : ""} ${i >= 2 ? "md:border-t lg:border-t-0" : ""} ${
+                i === 0 ? "md:pl-0" : ""
+              } ${i === 2 ? "md:pl-0 lg:border-l lg:pl-6" : ""}`}
+            >
+              <h3 className="display-sm text-[1.4rem] text-ink">{s.title}</h3>
+              <p className="mt-3 flex-1 text-[0.98rem] leading-[1.6] text-ink-2">{s.description}</p>
+              <ul className="mt-6 space-y-1.5">
+                {s.deliverables.map((d) => (
+                  <li key={d} className="flex items-center gap-2.5 text-[0.9rem] text-ink">
+                    <span className="h-[5px] w-[5px] shrink-0 bg-crimson" aria-hidden="true" />
+                    {d}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
