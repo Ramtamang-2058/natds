@@ -58,7 +58,7 @@ npm run clean    # rm -rf dist
 
 - **Type:** one family, **Archivo** variable (loaded via `<link>` in `index.html`), used across its width axis: `.display` (wdth 118, heavy — hero/contact headlines), `.display-md` (section headings), `.display-sm` (card/list titles), body at wdth 100, `.label` (semi-condensed, sentence case — never all caps), `.num` (expanded tabular numerals). No mono, no serif.
 - **Palette (`@theme` in `index.css`):** `snow` `#F4F5F2` (base), `mist` `#E7EBE8` (alt bands), `surface` `#FFFFFF`; `ink` `#0E1A2B`, `ink-2` `#45505F`, `ink-3` `#7A8391`; `line` `#D3D9D6`, `line-dark` `#26354A`; accent `crimson` `#C0192C` (`crimson-deep` `#9A1122`) — use sparingly (primary CTA, active markers); on dark bands `night` `#0E1A2B`, `night-2` `#15243A`, text `glacier` `#A9C9CF`.
-- **Rhythm:** light bands (`bg-snow` / `bg-mist`) with two dark `bg-night` bands (Sectors, Contact) plus the dark footer.
+- **Rhythm:** light bands (`bg-snow` / `bg-mist`) with two dark `bg-night` bands (Sectors, Contact) and a light footer that carries the full-colour logo.
 - **Shape:** squared — buttons 3px radius (`.btn` + `btn-primary` / `btn-ink` / `btn-outline`), media 4px. `.link` draws an underline. Hairlines via `border-line`.
 - **Motion:** one CSS load sequence in the hero (`.rise`, `.fade-in`, `.wipe` with `--d` delay — CSS so content never depends on JS timing). Otherwise motion only answers user action (sector switch, nav underline, mobile menu) via `motion/react`. No scroll-reveal fades. `prefers-reduced-motion` disables all of it.
 - **Numbering** only where the content is a real sequence (syllabus sessions, project steps).
@@ -101,8 +101,8 @@ Other planned assets:
 | Asset | Where it appears | Reference |
 |-------|------------------|-----------|
 | Open Graph share image | Social sharing | `public/images/og-image.png` (exists as placeholder) |
-| Logo | Branding | `public/logo.png` (exists as placeholder) |
-| Favicon | Browser | `public/favicon.svg` (working) + `favicon.png` (placeholder) |
+| Logo | Navbar (emblem + NATDS wordmark via `Wordmark.tsx`), footer (full logo), JSON-LD | Source: `brand/logo-source.png` (transparent, 1254px, not deployed). Derived: `public/brand/emblem.webp` (circle only), `public/brand/logo-full.webp` (emblem + text), `public/logo.png` (512px) |
+| Favicon | Browser | `public/favicon.png` (180px emblem) |
 
 ## Deployment
 
