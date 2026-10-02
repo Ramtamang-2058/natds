@@ -78,7 +78,7 @@ export function Sectors({activeId, onChange}: SectorsProps) {
             aria-labelledby={`tab-${sector.id}`}
             className="min-h-[34rem] lg:col-span-8"
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={sector.id}
                 initial={{opacity: 0, y: 10}}

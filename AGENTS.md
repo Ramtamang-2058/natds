@@ -13,6 +13,7 @@ npm run dev      # Vite dev server (port 5173)
 npm run build    # Vite build → dist/
 npm run preview  # Serve the production build locally
 npm run lint     # tsc --noEmit (type-check only, no ESLint)
+npm run check:seo # Validate generated HTML, metadata, sitemap and links after build
 npm run clean    # rm -rf dist
 ```
 
@@ -43,6 +44,8 @@ npm run clean    # rm -rf dist
 | `App.tsx`, `main.tsx`, `index.css` | Root wiring + design system |
 
 **Routing:** none (single page). Nav links smooth-scroll to `#section-id` anchors via `useNavigation`.
+
+**Static training pages:** `TRAINING_PAGES` and `TRAINING_COPY` in `src/data.ts` feed `src/pages/TrainingPage.tsx`. `npm run build` runs `scripts/prerender.mjs` after Vite: it prerenders the homepage, emits `/training/<slug>/index.html` and adds training URLs to the built sitemap. These are static documents, with no client router or runtime server. Use `npm run preview` after building to review training URLs; the development server only serves the homepage. Do not edit generated pages in `dist/`. The homepage hydrates its prerendered HTML. Keep components safe to render without browser globals outside effects/event handlers. Update the expected page count in `scripts/check-seo.mjs` when adding pages.
 
 **Section order (mirrors `HomePage.tsx`):** Hero (`#top`, sector index + "worked with" strip) → Sectors (`#sectors`) → Services (`#services`) → Programs (`#programs`) → Work (`#work`) → Approach → FieldNotes (`#notes`) → Contact (`#contact`). `NAV_LINKS` drives navbar, footer, and `useNavigation` active-section detection — keep ids in sync with rendered sections. Selected sector state lives in `HomePage.tsx`.
 

@@ -3,6 +3,18 @@ export interface NavLink {
   label: string;
 }
 
+export interface TrainingPage {
+  slug: string;
+  title: string;
+  description: string;
+  audience: string;
+  intro: string;
+  programId?: string;
+  sections: {title: string; text: string}[];
+  preparation: string;
+  articleSlug?: string;
+}
+
 export interface Sector {
   id: string;
   name: string;

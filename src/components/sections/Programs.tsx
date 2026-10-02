@@ -1,4 +1,4 @@
-import {TRAINING_PROGRAMS, waLink} from "@/data";
+import {TRAINING_COPY, TRAINING_PAGES, TRAINING_PROGRAMS, waLink} from "@/data";
 
 export function Programs() {
   const featured = TRAINING_PROGRAMS.filter((p) => p.featured);
@@ -9,13 +9,21 @@ export function Programs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-12">
           <h2 className="display-md text-[2.2rem] text-ink sm:text-[3rem] lg:col-span-7 lg:text-[3.6rem]">
-            Open programs, small groups.
+            {TRAINING_COPY.heading}
           </h2>
           <p className="measure self-end text-[1.05rem] text-ink-2 lg:col-span-5">
-            Run in Kathmandu and live online, or in-house for your team. Every
-            session is hands-on, on the kind of work you actually do.
+            {TRAINING_COPY.introduction}
           </p>
         </div>
+
+        <nav aria-label={TRAINING_COPY.directoryHeading} className="mt-10 border-y border-line py-6">
+          <h3 className="display-sm text-lg">{TRAINING_COPY.directoryHeading}</h3>
+          <ul className="mt-4 flex flex-wrap gap-x-8 gap-y-4">
+            {TRAINING_PAGES.map((page) => (
+              <li key={page.slug}><a className="link text-ink" href={`/training/${page.slug}/`}>{page.title}</a></li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2">
           {featured.map((p) => (

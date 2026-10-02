@@ -7,6 +7,7 @@ import type {
   Sector,
   Service,
   TrainingProgram,
+  TrainingPage,
 } from "./types";
 
 export type {
@@ -41,6 +42,98 @@ export const waLink = (text: string) =>
 export const WHATSAPP_LINKS = {
   general: waLink("Hello NATDS! I'd like to talk about AI for my organisation."),
 };
+
+export const TRAINING_COPY = {
+  heading: "AI training in Nepal, built around your work.",
+  introduction: "Learn in Kathmandu, live online or through an in-house team workshop. Explore training for your role and discuss the format, dates and fees with NATDS.",
+  directoryHeading: "Find training for your team",
+  deliveryHeading: "Kathmandu, Pokhara and teams across Nepal",
+  delivery: "NATDS is based in Kathmandu and offers live online training. Planning AI training for a team in Pokhara or elsewhere in Nepal? Share your location, group size and preferred dates on WhatsApp to discuss delivery and any on-site arrangements.",
+  enquiry: "Discuss training on WhatsApp",
+  preparationHeading: "Before your training",
+  syllabusHeading: "Program outline",
+  relatedHeading: "Explore other training",
+  articleLabel: "Read the practical guide",
+  proofHeading: "See our training work",
+  proof: "See photos and engagement details from NATDS training with IME Group and Prakriti Resource Center.",
+  fees: "Contact NATDS for current dates, fees, group size and tool requirements. Custom workshop scope is agreed with your team before booking.",
+};
+
+/** Published as static HTML at build time; keep page copy here. */
+export const TRAINING_PAGES: TrainingPage[] = [
+  {
+    slug: "ai-for-managers-nepal",
+    title: "AI for Managers in Nepal",
+    description: "Practical AI training for managers and executives in Nepal. Learn decision briefs, reporting, document workflows and responsible AI with NATDS.",
+    audience: "Managers, executives, team leads and project managers",
+    programId: "prog-managers",
+    intro: "AI for Managers & Executives is an eight-session program, with two hours per session, for people who lead teams. Work on the reports, decisions and follow-ups that fill your week, and build a repeatable way to use AI with human review.",
+    sections: [
+      {title: "Turn reports into decision briefs", text: "Use a sample management report to identify the question, compare options and draft a one-page brief. Check every number and supporting source before sharing it. The goal is a clearer decision process, with responsibility staying with the manager."},
+      {title: "AI for project management", text: "Practise turning meeting notes into action lists with owners and deadlines. Draft a project status update from an agreed task register, identify missing information and review risks against the project plan. AI suggestions need to be checked with the people doing the work."},
+      {title: "Build a team workflow", text: "Create reusable prompts for recurring work, define which documents may be shared with a tool and agree when a colleague must review an output. Bring these together in a 30-day implementation roadmap for one manageable use case."},
+    ],
+    preparation: "Bring a laptop and a non-confidential example of a recurring management task. Remove staff, customer and commercially sensitive details from practice documents. Share your role and learning goals when asking about the next intake.",
+    articleSlug: "ai-for-managers-nepal",
+  },
+  {
+    slug: "ai-for-researchers-nepal",
+    title: "AI for Researchers in Nepal",
+    description: "Explore NATDS AI training for researchers in Nepal: literature review, synthesis, qualitative analysis and citation-aware academic writing.",
+    audience: "Researchers, thesis writers, faculty and research teams",
+    programId: "prog-researchers",
+    intro: "The NATDS Researcher Program is a two-week intensive on AI-assisted research methods. It connects literature discovery, reading, analysis and writing while keeping source verification and the researcher's judgment central to the process.",
+    sections: [
+      {title: "Literature review with traceable sources", text: "Develop search terms from a research question, compare candidate papers and record inclusion decisions. Use AI to organise reading and suggest themes, then verify claims in the original papers. A generated reference is never a substitute for a source you have checked."},
+      {title: "Qualitative and quantitative analysis", text: "Explore AI-assisted coding of de-identified text and explanations of analytical steps. Compare suggested themes against the underlying material, retain a record of decisions and check numerical results independently. Discuss data permissions before uploading any research material."},
+      {title: "Academic writing and research integrity", text: "Use an evidence table to connect a draft argument to its sources. Practise revising for clarity without introducing unsupported claims, and record how AI was used. Follow your institution's requirements for disclosure, authorship and handling participant data."},
+    ],
+    preparation: "Bring a research question and a few papers you are permitted to use. Use public or de-identified practice data. Share your research stage so NATDS can discuss whether the program fits your work.",
+    articleSlug: "ai-for-researchers-nepal",
+  },
+  {
+    slug: "ai-training-teachers-nepal",
+    title: "AI Training for Teachers in Nepal",
+    description: "Discuss AI training for teachers, schools and colleges in Nepal: lesson planning, classroom materials, assessment rubrics and responsible AI use.",
+    audience: "Teachers, lecturers, school leaders and education teams",
+    intro: "Discuss a tailored AI workshop for your school, college or teaching team. Start with the curriculum and the everyday work of teaching: preparing lessons, adapting explanations and reviewing learning materials. Workshop scope and duration are agreed around your needs.",
+    sections: [
+      {title: "Lesson planning tied to learning outcomes", text: "Start with a curriculum objective and draft a lesson sequence, activity and checking question. Review the output for subject accuracy, age appropriateness and what is realistic in your classroom. Adapt explanations for different levels without changing the underlying learning goal."},
+      {title: "Assessment and feedback", text: "Use a sample assignment to draft a rubric and compare it with your marking criteria. Explore feedback suggestions using fictional student work. Teachers retain responsibility for assessment, fairness and the final feedback given to learners."},
+      {title: "Classroom AI literacy", text: "Discuss how to show students the difference between a fluent answer and a verified answer. Develop examples of checking sources, disclosing AI assistance and protecting personal information. Align classroom expectations with your school's existing policies."},
+    ],
+    preparation: "Share the subject, age group, number of teachers and one preparation task you want to improve. Bring a curriculum excerpt you may share; do not bring identifiable student records into public AI tools.",
+  },
+  {
+    slug: "ai-training-ngo-ingo-nepal",
+    title: "AI Training for NGOs and INGOs in Nepal",
+    description: "AI training for NGO and INGO teams in Nepal: proposal drafting, donor reporting, monitoring and evaluation, and responsible use of project data.",
+    audience: "NGO and INGO programme, M&E, communications and administration teams",
+    intro: "Build AI practice around the documents development teams already produce: proposals, donor updates, field summaries and project reports. NATDS has delivered on-site training for Prakriti Resource Center. Discuss a workshop shaped around your team's reporting and programme needs.",
+    sections: [
+      {title: "Proposals and donor reporting", text: "Map a donor's reporting headings to an approved project summary. Draft an outline, identify missing evidence and revise a narrative in your organisation's voice. Keep budgets, indicators and outcome claims tied to records your team has verified."},
+      {title: "Monitoring, evaluation and learning", text: "Practise organising de-identified survey responses, suggesting a coding framework and drafting a findings summary. Check themes against the original responses and separate observations from interpretation. Programme staff decide what the evidence can support."},
+      {title: "Protect beneficiary and partner information", text: "Agree which material can be used with an AI tool, how it should be de-identified and who reviews outputs before circulation. Use public or fictional practice documents when sensitive field data cannot be shared. Include these decisions in a simple staff workflow."},
+    ],
+    preparation: "Share your team's roles, a reporting task and preferred workshop format. Use blank templates or approved public reports for practice. The existing NGO engagement starts with an on-site training format of one to three days; discuss the scope and availability for your team.",
+  },
+  {
+    slug: "corporate-ai-training-nepal",
+    title: "Corporate AI Training in Nepal",
+    description: "Practical corporate AI training in Nepal for banking, insurance, hydropower, hospitality, retail and small businesses. Discuss a team workshop with NATDS.",
+    audience: "Corporate teams, operations staff and small business owners",
+    intro: "Start a team AI workshop with a specific workflow and an example your staff recognise. NATDS has trained the IME Group team and works with hydropower equipment suppliers in Nepal. The examples below are possible workshop topics to discuss, with scope agreed for your organisation.",
+    sections: [
+      {title: "AI training for banking and insurance", text: "Practise drafting customer explanations from approved policy text, summarising internal circulars and organising management reports. Use fictional customer cases for exercises. Staff must verify policy details and avoid placing customer, account or claims information into unapproved tools."},
+      {title: "AI training for hydropower and energy", text: "Compare sample supplier quotations against a specification, draft a progress report from a log and explore document questions with page references. Engineers review technical interpretations and calculations; a generated summary cannot replace a safety or engineering decision."},
+      {title: "AI training for hospitality", text: "Explore guest enquiry drafts based on a property's approved information, staff handover summaries and themes in public guest feedback. Review availability, prices and service details before responding. Use fictional guest records in training exercises."},
+      {title: "AI training for retail and small businesses", text: "Work with a sample product list to draft descriptions, organise customer questions or explain a sales spreadsheet. Start with one repeated task and compare the reviewed result with the current process. Confirm stock, prices and calculations in the business's source records."},
+      {title: "Project management and operations", text: "Turn sample meeting notes into a task register, draft a weekly update and identify gaps in a handover document. Agree who checks each output and measure the review time as well as the drafting time before expanding the workflow."},
+    ],
+    preparation: "Send your sector, team size, location and one recurring task. NATDS can discuss an in-house or live online format and the tools your organisation permits. Fees, timing and any automation work are scoped separately during the enquiry.",
+    articleSlug: "ai-tools-for-business-kathmandu",
+  },
+];
 
 /* ─────────────────────────────────────────────
    Navigation
