@@ -107,6 +107,23 @@ Other planned assets:
 | Logo | Navbar (emblem + NATDS wordmark via `Wordmark.tsx`), footer (full logo), JSON-LD | Source: `brand/logo-source.png` (transparent, 1254px, not deployed). Derived: `public/brand/emblem.webp` (circle only), `public/brand/logo-full.webp` (emblem + text), `public/logo.png` (512px) |
 | Favicon | Browser | `public/favicon.png` (180px emblem) |
 
+## Certificate verification system
+
+Three standalone static pages (no React, no server — served from `public/`):
+
+| URL | File | Purpose |
+|-----|------|---------|
+| `/verify/` | `public/verify/index.html` | Public lookup: enter certificate ID → valid / revoked / no record. Never shows emails. Rate-limited (10 tries / 5 min, localStorage). |
+| `/admin/` | `public/admin/index.html` | Password-gated viewer (`noindex`): decrypted records incl. emails, ID generator, edit instructions. Password stored only as SHA-256. Cloudflare Access recommended on top. |
+| `/certificate/?id=…` | `public/certificate/index.html` | Copy of `NATDS – Certificate of Completion.html` (repo root) + QR → `/verify/?id=…`, fills name/programme/date/ID from the records. |
+
+**Data flow:** edit `verify/records.json` (**gitignored plaintext — never commit**) → `node scripts/encrypt-records.mjs` → regenerates `public/verify/records.dat` (AES-256-GCM) + `public/verify/key.js`. Commit both generated files. The key ships to the browser: it protects the repo from scraping, **not** site visitors — real protection needs a server-side verifier.
+
+- Shared logic (ID format, lookup, rate limit, encrypt/decrypt) lives in `public/verify/records-lib.js` — loaded by the pages and by `scripts/encrypt-records.mjs`.
+- ID scheme: `NATDS-<PROG>-<YYBbatch>-<SEQ4>-<check>`; check char = mod-36 (`checkChar()`), reproduces the printed sample `NATDS-AIM-26B1-0001-W`. Lookup is **exact match only** — check chars are never validated, so legacy printed certs keep working.
+- `NAV_LINKS` entries with `href` render as plain page links (navbar, footer) instead of smooth-scroll.
+- `robots.txt` disallows `/admin/`; `/verify/` is in the sitemap (page count in `scripts/check-seo.mjs` must match).
+
 ## Deployment
 
 Push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds, type-checks, copies `CNAME` into `dist/`, and deploys to GitHub Pages → `natds.safalai.com.np` (domain via `CNAME` + Pages custom domain setting).

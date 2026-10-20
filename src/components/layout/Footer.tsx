@@ -30,8 +30,8 @@ export function Footer(props: FooterProps) {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.id}
-                href={`#${link.id}`}
-                onClick={handleNavClick(link.id)}
+                href={link.href ?? `#${link.id}`}
+                onClick={link.href ? undefined : handleNavClick(link.id)}
                 className="text-[0.95rem] text-ink-2 transition-colors hover:text-crimson"
               >
                 {link.label}

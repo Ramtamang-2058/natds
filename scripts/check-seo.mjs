@@ -7,7 +7,7 @@ const origin = 'https://natds.safalai.com.np';
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 assert.equal(urls.length, new Set(urls).size, 'Duplicate sitemap URLs');
-assert.equal(urls.length, 10, 'Expected homepage, four articles and five training pages');
+assert.equal(urls.length, 11, 'Expected homepage, four articles, five training pages and the verify page');
 const titles = new Set();
 
 for (const url of urls) {

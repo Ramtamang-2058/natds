@@ -144,6 +144,7 @@ export const NAV_LINKS: NavLink[] = [
   { id: "programs", label: "Programs" },
   { id: "work", label: "Work" },
   { id: "notes", label: "Notes" },
+  { id: "verify", label: "Verify", href: "/verify/" },
   { id: "contact", label: "Contact" },
 ];
 

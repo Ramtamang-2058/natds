@@ -1,6 +1,8 @@
 export interface NavLink {
   id: string;
   label: string;
+  /** External page path (e.g. "/verify/"). When set, the link navigates instead of smooth-scrolling. */
+  href?: string;
 }
 
 export interface TrainingPage {

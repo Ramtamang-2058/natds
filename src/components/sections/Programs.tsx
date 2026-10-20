@@ -79,6 +79,13 @@ export function Programs() {
             </article>
           ))}
         </div>
+
+        <p className="mt-12 border-t border-line pt-6 text-[0.98rem] text-ink-2">
+          Already trained with us?{" "}
+          <a className="link font-semibold text-ink" href="/verify/">
+            Verify a certificate
+          </a>
+        </p>
       </div>
     </section>
   );

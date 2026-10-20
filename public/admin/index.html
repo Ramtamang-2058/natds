@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NATDS admin — certificate records</title>
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.png">
+<style>
+:root{
+  --snow:#F4F5F2;--surface:#FFFFFF;--ink:#0E1A2B;--ink-2:#45505F;--ink-3:#7A8391;
+  --line:#D3D9D6;--crimson:#C0192C;--crimson-deep:#9A1122;
+  --green:#146B3A;--green-bg:#E7F3EC;--red:#9A1122;--red-bg:#FBEAEC;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--snow);color:var(--ink);font-family:Archivo,Arial,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--crimson)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{padding:26px 0 10px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand img{width:34px;height:34px}
+.brand span{font-weight:800;font-size:16px;letter-spacing:.16em}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line);border-radius:3px;padding:5px 10px;background:var(--surface)}
+main{padding:14px 0 60px}
+h1{font-size:1.7rem;font-weight:800;margin:14px 0 6px}
+.lede{color:var(--ink-2);margin:0 0 22px;max-width:70ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:22px}
+label{display:block;font-weight:600;font-size:.9rem;margin-bottom:8px}
+input,select{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:3px;background:#fff;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--crimson);outline-offset:1px}
+.btn{font:inherit;font-weight:700;border:0;border-radius:3px;background:var(--crimson);color:#fff;padding:11px 22px;cursor:pointer}
+.btn:hover{background:var(--crimson-deep)}
+.btn.ink{background:var(--ink)}
+.btn.ink:hover{background:#1B2A42}
+.btn.small{padding:6px 12px;font-size:.82rem}
+.err{color:var(--red);font-weight:600;font-size:.9rem;margin-top:10px;display:none}
+.hidden{display:none !important}
+.grid{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:26px 0 14px}
+.toolbar input{flex:1;min-width:200px}
+.count{font-size:.85rem;color:var(--ink-3)}
+.table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:4px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.9rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;background:#FAFBFA}
+tr:last-child td{border-bottom:0}
+td.id{font-weight:700;letter-spacing:.03em;white-space:nowrap}
+td.email{color:var(--ink-2);word-break:break-all}
+.pill{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.pill.ok{background:var(--green-bg);color:var(--green)}
+.pill.no{background:var(--red-bg);color:var(--red)}
+.copy{background:none;border:1px solid var(--line);border-radius:3px;font:inherit;font-size:.78rem;padding:4px 9px;cursor:pointer;color:var(--ink-2)}
+.copy:hover{border-color:var(--ink-3);color:var(--ink)}
+section.block{margin-top:28px}
+section.block h2{font-size:1.1rem;font-weight:800;margin:0 0 4px}
+section.block p.note{color:var(--ink-2);font-size:.9rem;margin:0 0 14px;max-width:75ch}
+code{background:#EEF1EF;border:1px solid var(--line);border-radius:3px;padding:1px 6px;font-size:.86em}
+pre{background:#0E1A2B;color:#DCE5EE;border-radius:4px;padding:14px 16px;overflow-x:auto;font-size:.82rem;line-height:1.5}
+footer{border-top:1px solid var(--line);padding:18px 0 40px;font-size:.83rem;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;width:100%">
+    <a class="brand" href="/"><img src="/brand/emblem.webp" alt=""><span>NATDS</span></a>
+    <span class="tag">Internal · certificates</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="gate" class="card" style="max-width:420px;margin-top:26px">
+    <h1 style="margin-top:0">Admin access</h1>
+    <p class="lede">Enter the admin password to view certificate records.</p>
+    <form id="gate-form" autocomplete="current-password">
+      <label for="pw">Password</label>
+      <div class="grid">
+        <input id="pw" type="password" style="flex:1;min-width:200px" required>
+        <button class="btn" type="submit">Unlock</button>
+      </div>
+      <p class="err" id="gate-err">Wrong password. Try again.</p>
+    </form>
+  </div>
+
+  <div id="panel" class="hidden">
+    <h1>Certificate records</h1>
+    <p class="lede">Decrypted locally in your browser from <code>public/verify/records.dat</code>. Emails are never shown on the public verify page — treat them as confidential.</p>
+
+    <div class="toolbar">
+      <input id="filter" placeholder="Filter by name or ID…" spellcheck="false">
+      <span class="count" id="count"></span>
+      <button class="btn ink small" id="lock" type="button">Lock</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Certificate ID</th><th>Name</th><th>Programme</th><th>Batch</th><th>Issued</th><th>Email</th><th>Status</th><th></th></tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+
+    <section class="block card" style="margin-top:28px">
+      <h2>Issue a new certificate ID</h2>
+      <p class="note">IDs follow <code>NATDS-&lt;PROG&gt;-&lt;YYBbatch&gt;-&lt;SEQ4&gt;-&lt;check&gt;</code> (programme codes: <code>AIM</code> AI for Managers, <code>AIR</code> Researchers, <code>AIP</code> Professionals, <code>AIS</code> Students). The check character is computed automatically.</p>
+      <div class="grid">
+        <div><label for="g-prog">Programme code</label><input id="g-prog" value="AIM" maxlength="6" style="width:90px;text-transform:uppercase"></div>
+        <div><label for="g-batch">Batch</label><input id="g-batch" value="26B1" maxlength="6" style="width:110px;text-transform:uppercase"></div>
+        <div><label for="g-seq">Next sequence</label><input id="g-seq" type="number" min="1" value="5" style="width:110px"></div>
+        <button class="btn small" id="g-go" type="button">Generate</button>
+      </div>
+      <pre id="g-out" class="hidden" style="margin-top:14px"></pre>
+    </section>
+
+    <section class="block card">
+      <h2>How to add, edit or revoke a record</h2>
+      <p class="note">The admin page is read-only — the static site cannot write back. Make changes in the repo:</p>
+      <ol style="color:var(--ink-2);font-size:.92rem;padding-left:20px;margin:0 0 12px">
+        <li>Edit <code>verify/records.json</code> (set <code>"revoked": true</code> to revoke, or add a new record object).</li>
+        <li>Run <code>node scripts/encrypt-records.mjs</code> — regenerates <code>public/verify/records.dat</code> and <code>key.js</code>.</li>
+        <li>Commit and push; the verify page picks it up after deploy.</li>
+      </ol>
+      <p class="note" style="margin:0">Admin access can be further protected with Cloudflare Access on <code>natds.safalai.com.np/admin/*</code> — the client-side gate alone only hides the page from casual visitors.</p>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap">Nepal AI &amp; Tech Digital Solution · <a href="/">natds.safalai.com.np</a></div></footer>
+
+<script src="/verify/key.js"></script>
+<script src="/verify/records-lib.js"></script>
+<script>
+(function () {
+  var V = window.NatdsVerify;
+  /* SHA-256 of the admin password — the plaintext is never stored. */
+  var PASS_HASH = "a2de21b4327dde0e49ba866f91a615a2f0e354fc78a35729ea3e5d281b71ddd5";
+  var gate = document.getElementById("gate");
+  var panel = document.getElementById("panel");
+  var err = document.getElementById("gate-err");
+  var rows = document.getElementById("rows");
+  var count = document.getElementById("count");
+  var filter = document.getElementById("filter");
+  var records = [];
+  var unlocked = false;
+
+  function sha256(text) {
+    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(text)).then(function (buf) {
+      return V.bytesToHex(buf);
+    });
+  }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c];
+    });
+  }
+
+  function render() {
+    var q = (filter.value || "").trim().toLowerCase();
+    var list = records.filter(function (r) {
+      if (!q) return true;
+      return (r.name + " " + r.id + " " + r.programme).toLowerCase().indexOf(q) !== -1;
+    });
+    rows.innerHTML = list
+      .map(function (r) {
+        return (
+          "<tr>" +
+          '<td class="id">' + esc(r.id) + "</td>" +
+          "<td><strong>" + esc(r.name) + "</strong></td>" +
+          "<td>" + esc(r.programme) + "</td>" +
+          "<td>" + esc(r.batch || "—") + "</td>" +
+          "<td>" + esc(V.formatDate(r.date)) + "</td>" +
+          '<td class="email">' + esc(r.email || "") + (r.altEmail ? "<br>" + esc(r.altEmail) : "") + "</td>" +
+          "<td>" + (r.revoked ? '<span class="pill no">Revoked</span>' : '<span class="pill ok">Active</span>') + "</td>" +
+          '<td><button class="copy" data-id="' + esc(r.id) + '" type="button">Copy ID</button></td>' +
+          "</tr>"
+        );
+      })
+      .join("");
+    count.textContent = list.length + " of " + records.length + " records";
+  }
+
+  function unlock() {
+    gate.classList.add("hidden");
+    panel.classList.remove("hidden");
+    unlocked = true;
+    try { sessionStorage.setItem("natds-admin", "1"); } catch (e) {}
+    fetch("/verify/records.dat")
+      .then(function (r) { return r.json(); })
+      .then(function (dat) { return V.decryptRecords(dat, window.NATDS_VERIFY_KEY); })
+      .then(function (data) {
+        records = data.records;
+        render();
+      })
+      .catch(function () {
+        rows.innerHTML = '<tr><td colspan="8">Could not load records.dat — check your connection.</td></tr>';
+      });
+  }
+
+  document.getElementById("gate-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    err.style.display = "none";
+    var pw = document.getElementById("pw").value;
+    sha256(pw)
+      .then(function (hash) {
+        if (hash === PASS_HASH) unlock();
+        else {
+          err.style.display = "block";
+          document.getElementById("pw").select();
+        }
+      });
+  });
+
+  document.getElementById("lock").addEventListener("click", function () {
+    records = [];
+    unlocked = false;
+    try { sessionStorage.removeItem("natds-admin"); } catch (e) {}
+    panel.classList.add("hidden");
+    gate.classList.remove("hidden");
+    document.getElementById("pw").value = "";
+  });
+
+  filter.addEventListener("input", render);
+
+  rows.addEventListener("click", function (e) {
+    var b = e.target.closest(".copy");
+    if (!b) return;
+    if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.id);
+    b.textContent = "Copied";
+    setTimeout(function () { b.textContent = "Copy ID"; }, 1200);
+  });
+
+  document.getElementById("g-go").addEventListener("click", function () {
+    var prog = (document.getElementById("g-prog").value || "AIM").toUpperCase().trim();
+    var batch = (document.getElementById("g-batch").value || "26B1").toUpperCase().trim();
+    var seq = parseInt(document.getElementById("g-seq").value, 10) || 1;
+    var id = V.makeId(prog, batch, seq);
+    var tpl = {
+      id: id,
+      name: "Full Name",
+      programme: "AI for Managers",
+      batch: batch,
+      date: new Date().toISOString().slice(0, 10),
+      email: "name@example.com",
+      revoked: false
+    };
+    var out = document.getElementById("g-out");
+    out.textContent =
+      id + "\n\nPaste into verify/records.json:\n" + JSON.stringify(tpl, null, 2).replace(/^\{/,"    {").replace(/\}$/, "    }");
+    out.classList.remove("hidden");
+    document.getElementById("g-seq").value = seq + 1;
+  });
+
+  try {
+    if (sessionStorage.getItem("natds-admin") === "1") unlock();
+  } catch (e) {}
+  if (!unlocked) document.getElementById("pw").focus();
+})();
+</script>
+</body>
+</html>

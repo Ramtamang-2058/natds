@@ -35,12 +35,13 @@ export function Navbar(props: NavbarProps) {
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
           {NAV_LINKS.filter((l) => l.id !== "contact").map((link) => {
-            const active = activeSection === link.id;
+            const isPage = Boolean(link.href);
+            const active = !isPage && activeSection === link.id;
             return (
               <a
                 key={link.id}
-                href={`#${link.id}`}
-                onClick={handleNavClick(link.id)}
+                href={link.href ?? `#${link.id}`}
+                onClick={isPage ? undefined : handleNavClick(link.id)}
                 aria-current={active ? "true" : undefined}
                 className={`relative px-3.5 py-2 text-[0.92rem] font-medium transition-colors ${
                   active ? "text-ink" : "text-ink-2 hover:text-ink"
@@ -92,8 +93,12 @@ export function Navbar(props: NavbarProps) {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.id}
-                  href={`#${link.id}`}
+                  href={link.href ?? `#${link.id}`}
                   onClick={(e) => {
+                    if (link.href) {
+                      setOpen(false);
+                      return;
+                    }
                     setOpen(false);
                     handleNavClick(link.id)(e);
                   }}
