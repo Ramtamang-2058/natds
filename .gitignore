@@ -32,3 +32,6 @@ yarn-error.log*
 # Certificate verification — plaintext records must never be committed
 verify/records.json
 verify/*.key
+
+# Email drafts — contain trainee addresses, check locally before sending
+outbox/
