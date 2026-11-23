@@ -119,6 +119,8 @@ Three standalone static pages (no React, no server — served from `public/`):
 
 **Data flow:** edit `verify/records.json` (**gitignored plaintext — never commit**) → `node scripts/encrypt-records.mjs` → regenerates `public/verify/records.dat` (AES-256-GCM) + `public/verify/key.js`. Commit both generated files. The key ships to the browser: it protects the repo from scraping, **not** site visitors — real protection needs a server-side verifier.
 
+**Email sending runbook:** `outbox/EMAIL-SEND-APPROACH.md` (local/gitignored) records the Gmail SMTP flow, `.eml` format, masked-link decision, recipients and sent log. Not committed — recreate it when bootstrapping a new batch.
+
 - `key.js` also carries `NATDS_VERIFY_VERSION` (hash of the generated blob); pages fetch `/verify/records.dat?v=<version>` so the 10-minute Pages cache never serves stale records. Regenerating records bumps it automatically.
 - Shared logic (ID format, lookup, rate limit, encrypt/decrypt) lives in `public/verify/records-lib.js` — loaded by the pages and by `scripts/encrypt-records.mjs`.
 - ID scheme: `NATDS-<PROG>-<YYBbatch>-<SEQ4>-<check>`; check char = mod-36 (`checkChar()`), reproduces the printed sample `NATDS-AIM-26B1-0001-W`. Lookup is **exact match only** — check chars are never validated, so legacy printed certs keep working.
