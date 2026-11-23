@@ -44,7 +44,7 @@ export function Programs() {
 
               <div className="mt-8">
                 <a
-                  href={waLink(p.waText)}
+                  href={waLink(p.waText, p.waNumber)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-ink"
@@ -69,7 +69,7 @@ export function Programs() {
                 <p className="mt-2 text-[0.96rem] leading-[1.55] text-ink-2">{p.description}</p>
               </div>
               <a
-                href={waLink(p.waText)}
+                href={waLink(p.waText, p.waNumber)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link shrink-0 text-[0.95rem] font-semibold text-ink"

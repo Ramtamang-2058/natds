@@ -34,7 +34,7 @@ for (const url of urls) {
   }
   if (pathname.startsWith('/training/')) {
     assert.doesNotMatch(html, /<script[^>]+type="module"/, 'Static training pages must not mount the homepage');
-    assert.match(html, /https:\/\/wa\.me\/9779818488715\?text=/, 'Missing WhatsApp enquiry');
+    assert.match(html, /https:\/\/wa\.me\/(?:9779818488715|9779747887484)\?text=/, 'Missing WhatsApp enquiry');
     assert.match(html, /\/assets\/[^" ]+\.css/, 'Missing built stylesheet');
   }
 }

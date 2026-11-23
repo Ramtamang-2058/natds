@@ -47,6 +47,8 @@ export interface TrainingProgram {
   featured?: boolean;
   syllabus: string[];
   waText: string;
+  waNumber?: string;
+  waDisplay?: string;
 }
 
 export interface FieldNote {

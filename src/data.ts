@@ -36,8 +36,8 @@ export const BRAND = {
 };
 
 /** Build a wa.me link with a pre-filled message. */
-export const waLink = (text: string) =>
-  `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(text)}`;
+export const waLink = (text: string, number: string = BRAND.whatsappNumber) =>
+  `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 
 export const WHATSAPP_LINKS = {
   general: waLink("Hello NATDS! I'd like to talk about AI for my organisation."),
@@ -299,6 +299,8 @@ export const TRAINING_PROGRAMS: TrainingProgram[] = [
       "Leave with a 30-day implementation roadmap",
     ],
     waText: "Hi NATDS! I'm interested in the AI for Managers & Executives course (8 sessions, 2 hrs each). Please share the details.",
+    waNumber: "9779747887484",
+    waDisplay: "+977 974-7887484",
   },
   {
     id: "prog-researchers",

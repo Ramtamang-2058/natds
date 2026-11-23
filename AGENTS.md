@@ -4,7 +4,7 @@
 
 **NATDS — Nepal AI & Tech Digital Solution.** A static, single-page React + Vite corporate site. NATDS trains teams and builds AI automations for Nepali organisations across sectors — **hydropower & energy, banking & finance, NGOs & development, research & academia, trade & supply**. "Headwater" theme: snow-white ground, river-indigo ink, one rhododendron-crimson accent, a single variable typeface (Archivo) used across its width axis. English only. Deployed to GitHub Pages at `natds.safalai.com.np` (repo: `Ramtamang-2058/natds`).
 
-Signature element: the **Sectors switcher** (`#sectors`) — an accessible tab list on a dark band; each sector shows its own use cases, typical engagement and track record. The hero's sector index opens it pre-selected. Programs (AI for Managers, Researcher Program, Professionals, Students) live in one `#programs` section. Contact is **WhatsApp-first** — direct number `+977 981-8488715`. **Work** (`#work`) shows real engagement photos (IME Group, Prakriti Resource Center).
+Signature element: the **Sectors switcher** (`#sectors`) — an accessible tab list on a dark band; each sector shows its own use cases, typical engagement and track record. The hero's sector index opens it pre-selected. Programs (AI for Managers, Researcher Program, Professionals, Students) live in one `#programs` section. Contact is **WhatsApp-first** — global number `+977 981-8488715`; the AI for Managers intake uses `+977 974-7887484`. **Work** (`#work`) shows real engagement photos (IME Group, Prakriti Resource Center).
 
 ## Commands (run from repo root)
 
@@ -70,7 +70,7 @@ npm run clean    # rm -rf dist
 
 ## Key gotchas
 
-1. **WhatsApp is the single contact channel.** Number lives in `src/data.ts` → `BRAND.whatsappNumber` (`9779818488715`). Pre-built links in `WHATSAPP_LINKS`. Update the number in ONE place. The Contact form and all CTAs open `wa.me` links.
+1. **WhatsApp is the single contact channel.** Global number lives in `src/data.ts` → `BRAND.whatsappNumber` (`9779818488715`, display `+977 981-8488715`) and is used by nav/footer/hero/contact/sectors and most training pages. **AI for Managers only** uses `9779747887484` (`+977 974-7887484`) via `TRAINING_PROGRAMS[].waNumber` / `waDisplay` on the homepage programme card and `/training/ai-for-managers-nepal/`. Static pages (`index.html` JSON-LD, `public/verify/index.html`, non-Managers `public/field-notes/*.html`), `README.md` and `scripts/check-seo.mjs` hardcode the global digits — grep the full digits when changing.
 2. **Sector claims must be real.** `SECTORS[].proof` and `CLIENTS` list only real engagements — don't invent client names.
 3. **No i18n.** Bilingual (Nepali) deliberately omitted — English only.
 4. **MediaSlot fallback:** every photo/video slot renders a paper-toned placeholder with the expected path as a caption when the file is absent. Add files under `public/` and the placeholders disappear automatically. Do NOT hardcode fallback logic per section.

@@ -15,7 +15,7 @@ export function TrainingPage({page}: {page: TrainingPageData}) {
         <p className="label">{page.audience}</p>
         <h1 className="display-md mt-5 text-[2.5rem] sm:text-[3.5rem]">{page.title}</h1>
         <p className="mt-6 text-lg leading-relaxed text-ink-2">{page.intro}</p>
-        <a className="btn btn-primary mt-8" href={waLink(`Hi NATDS! I'm interested in ${page.title}. Please share the details.`)}>{TRAINING_COPY.enquiry}</a>
+        <a className="btn btn-primary mt-8" href={waLink(`Hi NATDS! I'm interested in ${page.title}. Please share the details.`, program?.waNumber)}>{TRAINING_COPY.enquiry}</a>
         <div className="mt-12 space-y-10">
           {page.sections.map((section) => (
             <section key={section.title}>
@@ -58,7 +58,7 @@ export function TrainingPage({page}: {page: TrainingPageData}) {
       </main>
       <footer className="border-t border-line px-4 py-8 text-center text-ink-2">
         <a href="/">{BRAND.fullName}</a><p className="mt-2">{BRAND.location}</p>
-        <a className="link mt-2 inline-block" href={waLink(`Hi NATDS! I'm interested in ${page.title}.`)}>{BRAND.whatsappDisplay}</a>
+        <a className="link mt-2 inline-block" href={waLink(`Hi NATDS! I'm interested in ${page.title}.`, program?.waNumber)}>{program?.waDisplay ?? BRAND.whatsappDisplay}</a>
       </footer>
     </div>
   );
