@@ -175,3 +175,9 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .rise, .fade-in, .wipe { animation: none; }
 }
+
+@keyframes reel-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.reel-progress { transform-origin: left; animation: reel-progress 5.2s linear forwards; }
+@media (prefers-reduced-motion: reduce) {
+  .reel-progress { animation: none; transform: scaleX(1); }
+}
