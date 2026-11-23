@@ -7,6 +7,7 @@ import {Programs} from "@/components/sections/Programs";
 import {Sectors} from "@/components/sections/Sectors";
 import {Services} from "@/components/sections/Services";
 import {StartHere} from "@/components/sections/StartHere";
+import {Terrain} from "@/components/sections/Terrain";
 import {Work} from "@/components/sections/Work";
 import {SECTORS} from "@/data";
 
@@ -30,6 +31,7 @@ export function HomePage(props: HomePageProps) {
       <Services />
       <Programs />
       <Work />
+      <Terrain />
       <Approach />
       <StartHere />
       <FieldNotes />

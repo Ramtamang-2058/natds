@@ -54,10 +54,10 @@ export function MomentReel() {
   }, [playing, reduceMotion]);
 
   return (
-    <div className="mt-12 grid grid-cols-1 gap-10 border-y border-line py-10 lg:mt-16 lg:grid-cols-12 lg:gap-14 lg:py-14">
-      <div className="lg:col-span-4">
-        <div className="relative mx-auto w-full max-w-[22rem] overflow-hidden rounded-[4px] bg-night sm:mx-0">
-          <div className="aspect-[9/16]">
+    <div className="mt-16 grid grid-cols-1 gap-12 lg:mt-24 lg:grid-cols-12 lg:gap-16">
+      <div className="lg:col-span-5">
+        <div className="relative mx-auto w-full max-w-[24rem] overflow-hidden rounded-[4px] bg-night sm:mx-0">
+          <div className="aspect-[4/5]">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={index}
@@ -145,24 +145,28 @@ export function MomentReel() {
         </div>
       </div>
 
-      <div className="self-center lg:col-span-7 lg:col-start-6">
+      <div className="self-center lg:col-span-6 lg:col-start-7">
         <p className="label text-ink-3">Moments, not montage</p>
-        <h3 className="display-md mt-3 text-[2rem] text-ink sm:text-[2.8rem]">
-          A short reel of the work, as it happens.
+        <h3 className="display-md mt-4 max-w-lg text-[2.2rem] text-ink sm:text-[3.2rem]">
+          The room, before the slide deck.
         </h3>
-        <p className="measure mt-5 text-[1.05rem] leading-[1.7] text-ink-2">
-          Press play for a quiet, six-frame look at recent sessions. No music, no hard sell — just the room, the questions and the follow-through.
-        </p>
-        <p className="measure mt-4 text-[1rem] leading-[1.7] text-ink-2">
-          When a workflow is worth keeping, we take it further: custom software, mobile apps and project support through our SAFAL AI team.
-        </p>
-        <a
-          href="/services/software-and-app-development.html"
-          className="link mt-7 inline-block text-[0.95rem] text-ink"
-        >
-          Software, apps &amp; project support
-        </a>
-        <p className="mt-8 text-[0.85rem] text-ink-3">Tap a frame marker to jump. Reduced-motion settings keep it still.</p>
+        <div className="mt-8 max-w-xl space-y-5 text-[1.05rem] leading-[1.8] text-ink-2">
+          <p>
+            Press play for six quiet frames. No music, no stock footage — just people asking better questions about their own work.
+          </p>
+          <p>
+            When the conversation turns into a tool, we stay: software, mobile apps and project support, built with our SAFAL AI team.
+          </p>
+        </div>
+        <div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-[0.95rem]">
+          <a href="/services/software-and-app-development.html" className="link text-ink">
+            Software &amp; project support
+          </a>
+          <a href="/field-notes/corporate-ai-training-nepal.html" className="link text-ink-2">
+            How a rollout works
+          </a>
+        </div>
+        <p className="mt-10 text-[0.82rem] text-ink-3">Tap a marker to jump. Reduced-motion settings keep it still.</p>
       </div>
     </div>
   );
