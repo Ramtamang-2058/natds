@@ -85,7 +85,7 @@ h1{font-weight:500;font-size:50px;margin:26px 0 0;letter-spacing:.02em;line-heig
   var id = V.normalizeId(params.get("id") || "");
   if (!id) return;
 
-  fetch("/verify/records.dat?v=" + encodeURIComponent(window.NATDS_VERIFY_VERSION || "1"))
+  fetch("/verify/records.dat?v=" + encodeURIComponent(window.NATDS_VERIFY_VERSION || "1"), {cache: "no-store"})
     .then(function (r) { return r.json(); })
     .then(function (dat) { return V.decryptRecords(dat, window.NATDS_VERIFY_KEY); })
     .then(function (data) {
