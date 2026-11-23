@@ -391,6 +391,42 @@ export const EVENTS: EventItem[] = [
 ───────────────────────────────────────────── */
 export const FIELD_NOTES: FieldNote[] = [
   {
+    id: "note-training-nepal",
+    slug: "ai-training-in-nepal",
+    title: "AI training in Nepal: a practical guide for teams",
+    date: "Nov 2026",
+    excerpt:
+      "Formats, curriculum, questions to ask and one measure to check afterwards — how to choose AI training that changes real work.",
+    keywords: ["ai training nepal", "ai courses nepal", "practical ai training nepal", "ai training kathmandu"],
+  },
+  {
+    id: "note-training-kathmandu",
+    slug: "practical-ai-training-kathmandu",
+    title: "Practical AI training in Kathmandu: a local guide",
+    date: "Nov 2026",
+    excerpt:
+      "Classroom, live online or in your office: what practical training in Kathmandu, Lalitpur and Bhaktapur should actually look like.",
+    keywords: ["ai training kathmandu", "practical ai training kathmandu", "ai courses kathmandu", "ai training lalitpur"],
+  },
+  {
+    id: "note-corporate-nepal",
+    slug: "corporate-ai-training-nepal",
+    title: "Corporate AI training in Nepal: a team rollout",
+    date: "Nov 2026",
+    excerpt:
+      "Pick one workflow, train managers first, write a small use policy and measure the result before expanding the rollout.",
+    keywords: ["corporate ai training nepal", "ai training for managers nepal", "team ai training", "ai training corporate"],
+  },
+  {
+    id: "note-training-pokhara",
+    slug: "ai-training-pokhara",
+    title: "AI training in Pokhara: on-site, online or hybrid",
+    date: "Nov 2026",
+    excerpt:
+      "Delivery options for teams in Pokhara and Gandaki, with a realistic two-week plan and a preparation checklist.",
+    keywords: ["ai training pokhara", "ai courses pokhara", "ai training gandaki", "ai training butwal"],
+  },
+  {
     id: "note-managers-nepal",
     slug: "ai-for-managers-nepal",
     title: "AI for Managers in Nepal: A practical first week",

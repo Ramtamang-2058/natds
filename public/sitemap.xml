@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://natds.safalai.com.np/</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -36,4 +36,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url><loc>https://natds.safalai.com.np/field-notes/ai-training-in-nepal.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://natds.safalai.com.np/field-notes/practical-ai-training-kathmandu.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://natds.safalai.com.np/field-notes/ai-training-pokhara.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://natds.safalai.com.np/field-notes/corporate-ai-training-nepal.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://natds.safalai.com.np/locations/nepal.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://natds.safalai.com.np/locations/koshi-province.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://natds.safalai.com.np/locations/india-uae.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://natds.safalai.com.np/services/software-and-app-development.html</loc><lastmod>2026-11-23</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

@@ -84,6 +84,7 @@ npm run clean    # rm -rf dist
 2. Add the data in `src/data.ts` (all copy lives here — edit copy in this one file)
 3. Build the section in `src/components/sections/`
 4. Wire it into `src/pages/HomePage.tsx` (and `NAV_LINKS` in `data.ts` if it deserves a nav entry)
+5. For standalone SEO pages, add the HTML under `public/field-notes/`, `public/locations/` or `public/services/`, add the URL to `public/sitemap.xml`, update the expected page count in `scripts/check-seo.mjs`, and link the page from `FIELD_NOTES` or the footer. Keep location pages honest — list districts as coverage, not as physical offices.
 
 ## Adding media — events gallery (drop photos here)
 

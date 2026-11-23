@@ -46,6 +46,12 @@ export function Footer(props: FooterProps) {
           </div>
         </div>
 
+        <nav aria-label="More from NATDS" className="mt-8 flex flex-wrap gap-x-5 gap-y-2 border-t border-line pt-6 text-[0.9rem] text-ink-2">
+          <a href="/locations/nepal.html" className="transition-colors hover:text-crimson">Where we work</a>
+          <a href="/services/software-and-app-development.html" className="transition-colors hover:text-crimson">Software &amp; mobile apps</a>
+          <a href="/field-notes/ai-training-in-nepal.html" className="transition-colors hover:text-crimson">AI training guides</a>
+        </nav>
+
         <div className="mt-12 flex flex-col justify-between gap-2 border-t border-line pt-6 text-[0.85rem] text-ink-3 sm:flex-row">
           <p>
             © {new Date().getFullYear()} {BRAND.fullName}
